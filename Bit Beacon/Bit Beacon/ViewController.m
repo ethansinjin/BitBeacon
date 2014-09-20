@@ -35,7 +35,7 @@
     else
     {
         NSLog (@"Field has some data");
-        [_chargeButton setTitle:@"Charging..." forState:UIControlStateDisabled];
+        [_chargeButton setTitle:@"Awaiting Payment" forState:UIControlStateDisabled];
         [_chargeButton setEnabled:NO];
         [_statusIcon setImage:[UIImage imageNamed:@"signal"]];
     }

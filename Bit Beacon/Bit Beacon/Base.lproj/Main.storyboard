@@ -82,7 +82,7 @@
                                             <constraint firstAttribute="width" constant="191" id="Vda-9p-AJy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-xw-CZn">
                                         <rect key="frame" x="18" y="20" width="13" height="27"/>
@@ -130,7 +130,7 @@
                             <constraint firstItem="VdF-XN-k6S" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="omH-cK-JXr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="POS" id="AIw-mK-iyx"/>
+                    <tabBarItem key="tabBarItem" title="POS" image="bank" selectedImage="bank" id="AIw-mK-iyx"/>
                     <connections>
                         <outlet property="chargeButton" destination="3RA-H7-n2L" id="KnC-dc-pwX"/>
                         <outlet property="priceField" destination="2pp-eK-8IE" id="ehJ-AA-aCb"/>
@@ -149,7 +149,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hey-Tu-eeP">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.091375077361596668" green="0.20439227657093204" blue="0.46635841836734693" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="AaT-mR-a7A"/>
@@ -161,6 +161,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bank" width="29" height="26"/>
         <image name="lighthouse" width="128" height="128"/>
         <image name="transaction_bg" width="320" height="568"/>
     </resources>
