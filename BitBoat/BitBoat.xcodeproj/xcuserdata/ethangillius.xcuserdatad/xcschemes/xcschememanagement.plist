@@ -4,20 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BitBoat.xcscheme</key>
+		<key>breadwallet.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>crypto.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>AF165E8219CD1FCA003D8F7D</key>
+		<key>7579F7D819231A5D00CA56F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF165E9B19CD1FCB003D8F7D</key>
+		<key>75D5F3BD191EC270004AB296</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75D5F3E4191EC270004AB296</key>
 		<dict>
 			<key>primary</key>
 			<true/>
