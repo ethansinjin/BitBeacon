@@ -66,7 +66,8 @@
                             }];
     } else {
         NSLog(@"Can not evaluate Touch ID");
-        
+        //The device the user is on does not have a Touch ID sensor. Ignore and don't require authorization for now
+        [self updateStatusLabel];
     }
 }
 -(void) updateStatusLabel{
