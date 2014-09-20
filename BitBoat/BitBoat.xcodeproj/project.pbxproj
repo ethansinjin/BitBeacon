@@ -16,6 +16,7 @@
 		AF165EA319CD1FCB003D8F7D /* BitBoatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EA219CD1FCB003D8F7D /* BitBoatTests.m */; };
 		AF165EB319CD2870003D8F7D /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */; };
 		AF165EB419CD2870003D8F7D /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB219CD2870003D8F7D /* FBShimmeringView.m */; };
+		AF165EB619CD2BBE003D8F7D /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
 		AF165EB119CD2870003D8F7D /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		AF165EB219CD2870003D8F7D /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF165EB619CD2BBE003D8F7D /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +108,7 @@
 		AF165E8619CD1FCA003D8F7D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */,
 				AF165E8719CD1FCA003D8F7D /* Info.plist */,
 				AF165E8819CD1FCA003D8F7D /* main.m */,
 			);

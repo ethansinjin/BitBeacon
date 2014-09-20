@@ -7,46 +7,80 @@
 //
 
 #import "ViewController.h"
-#import "FBShimmering/FBShimmeringView.h"
+//#import "FBShimmering/FBShimmeringView.h"
+@import LocalAuthentication;
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *payButton;
 
 @end
 
 @implementation ViewController
 {
-    FBShimmeringView *_shimmeringView;
-    UILabel *_logoLabel;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _shimmeringView = [[FBShimmeringView alloc] init];
-    _shimmeringView.shimmering = YES;
-    _shimmeringView.shimmeringBeginFadeDuration = 0.3;
-    _shimmeringView.shimmeringOpacity = 0.3;
-    [self.view addSubview:_shimmeringView];
-    
-    _logoLabel = [[UILabel alloc] initWithFrame:_shimmeringView.bounds];
-    _logoLabel.text = @"Pay with BitPay";
-    _logoLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:45.0];
-    _logoLabel.textColor = [UIColor whiteColor];
-    _logoLabel.textAlignment = NSTextAlignmentCenter;
-    _logoLabel.backgroundColor = [UIColor clearColor];
-    _shimmeringView.contentView = _logoLabel;
+   
     
 }
+- (IBAction)payPressed:(id)sender {
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    NSString *myLocalizedReasonString = @"Authenticate to send BTC";
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        
+        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                  localizedReason:myLocalizedReasonString
+                            reply:^(BOOL succes, NSError *error) {
+                                
+                                if (succes) {
+                                    
+                                    NSLog(@"User is authenticated successfully");
+                                    [self updateStatusLabel];
+                                } else {
+                                    
+                                    switch (error.code) {
+                                        case LAErrorAuthenticationFailed:
+                                            NSLog(@"Authentication Failed");
+                                            break;
+                                            
+                                        case LAErrorUserCancel:
+                                            NSLog(@"User pressed Cancel button");
+                                            break;
+                                            
+                                        case LAErrorUserFallback:
+                                            NSLog(@"User pressed \"Enter Password\"");
+                                            break;
+                                            
+                                        default:
+                                            NSLog(@"Touch ID is not configured");
+                                            break;
+                                    }
+                                    
+                                    NSLog(@"Authentication Fails");
+                                }
+                            }];
+    } else {
+        NSLog(@"Can not evaluate Touch ID");
+        
+    }
+}
+-(void) updateStatusLabel{
+    dispatch_async(dispatch_get_main_queue(), ^{
+                [_payButton setTitle:@"Transferring BTC" forState:UIControlStateDisabled];
+                [_payButton setEnabled:NO];
+                    });
+}
 
-- (void)viewWillLayoutSubviews
+
+- (void)transferBitcoin
 {
-    [super viewWillLayoutSubviews];
-    
-    CGRect shimmeringFrame = self.view.bounds;
-    shimmeringFrame.origin.y = shimmeringFrame.size.height * 0.68;
-    shimmeringFrame.size.height = shimmeringFrame.size.height * 0.32;
-    _shimmeringView.frame = shimmeringFrame;
+    NSLog(@"Changing Now");
+    [_payButton setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {

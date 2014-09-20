@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lIZ-La-7d4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--BitBoat-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -21,49 +21,106 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zha-Gt-ePG">
-                                <rect key="frame" x="16" y="28" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="16" y="232" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="TSp-tu-ahu"/>
+                                    <constraint firstAttribute="height" constant="40" id="fCK-v7-tv3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount (USD)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7v-aG-k7a">
-                                <rect key="frame" x="16" y="57" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="16" y="280" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LL6-XQ-kA8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount (BTC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEp-CY-P3R">
-                                <rect key="frame" x="16" y="86" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="16" y="328" width="568" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="2nT-Dn-LJg"/>
+                                    <constraint firstAttribute="height" constant="40" id="blp-vv-qeY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaE-BT-iaf">
+                                <rect key="frame" x="168" y="487" width="264" height="62"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="42"/>
+                                <state key="normal" title="Pay with BitPay">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="payPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="v7f-S2-pB5"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-50" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-Mt-PMY">
+                                <rect key="frame" x="275" y="174" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="hfo-RZ-2Xn"/>
+                                    <constraint firstAttribute="height" constant="50" id="l4R-Wj-w2c"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xEp-CY-P3R" firstAttribute="top" secondItem="H7v-aG-k7a" secondAttribute="bottom" constant="8" symbolic="YES" id="GAj-92-G1V"/>
-                            <constraint firstItem="H7v-aG-k7a" firstAttribute="top" secondItem="zha-Gt-ePG" secondAttribute="bottom" constant="8" symbolic="YES" id="Kx5-9K-Svs"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="Pnp-TN-PGc"/>
+                            <constraint firstItem="H7v-aG-k7a" firstAttribute="leading" secondItem="zha-Gt-ePG" secondAttribute="leading" id="8dy-DV-nLX"/>
+                            <constraint firstItem="uaE-BT-iaf" firstAttribute="centerX" secondItem="ltE-Dq-DjQ" secondAttribute="centerX" id="A2z-yi-G1k"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="uaE-BT-iaf" secondAttribute="bottom" constant="51" id="HeM-yw-j3o"/>
+                            <constraint firstItem="xEp-CY-P3R" firstAttribute="top" secondItem="H7v-aG-k7a" secondAttribute="bottom" constant="8" symbolic="YES" id="IE2-Hn-4E2"/>
+                            <constraint firstItem="DH6-Mt-PMY" firstAttribute="centerX" secondItem="zha-Gt-ePG" secondAttribute="centerX" id="L2B-tS-f4J"/>
+                            <constraint firstItem="xEp-CY-P3R" firstAttribute="trailing" secondItem="H7v-aG-k7a" secondAttribute="trailing" id="Ljb-FN-ogY"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Psl-Tf-EDP"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="QtS-XI-k9y"/>
                             <constraint firstAttribute="trailing" secondItem="ltE-Dq-DjQ" secondAttribute="trailing" id="Rui-xm-zFt"/>
-                            <constraint firstItem="H7v-aG-k7a" firstAttribute="leading" secondItem="xEp-CY-P3R" secondAttribute="leading" id="TSC-lg-5WH"/>
+                            <constraint firstItem="xEp-CY-P3R" firstAttribute="centerX" secondItem="uaE-BT-iaf" secondAttribute="centerX" id="UjV-iV-QFi"/>
+                            <constraint firstItem="H7v-aG-k7a" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Unq-cJ-oWT"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="WHc-fp-Gjm"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="leading" secondItem="jyV-Pf-zRb" secondAttribute="leading" id="a7O-aX-suy"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="fWc-D1-oJj"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="leading" secondItem="H7v-aG-k7a" secondAttribute="leading" id="ohc-Ra-FDd"/>
+                            <constraint firstItem="xEp-CY-P3R" firstAttribute="leading" secondItem="H7v-aG-k7a" secondAttribute="leading" id="oGY-HG-Zr6"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="trailing" secondItem="2fi-mo-0CV" secondAttribute="trailing" id="pE6-2h-6Py"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="width" secondItem="xEp-CY-P3R" secondAttribute="width" id="pvE-NX-36X"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="szV-aA-uyU"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="width" secondItem="H7v-aG-k7a" secondAttribute="width" id="zBC-Wa-9jl"/>
+                            <constraint firstItem="H7v-aG-k7a" firstAttribute="centerY" secondItem="ltE-Dq-DjQ" secondAttribute="centerY" id="pM6-OS-OMS"/>
+                            <constraint firstItem="H7v-aG-k7a" firstAttribute="top" secondItem="zha-Gt-ePG" secondAttribute="bottom" constant="8" symbolic="YES" id="qGB-54-6R8"/>
+                            <constraint firstItem="zha-Gt-ePG" firstAttribute="top" secondItem="DH6-Mt-PMY" secondAttribute="bottom" constant="8" symbolic="YES" id="xwt-Nf-s7l"/>
+                            <constraint firstItem="zha-Gt-ePG" firstAttribute="trailing" secondItem="H7v-aG-k7a" secondAttribute="trailing" id="zjq-Bt-AxA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="BitBoat" id="QDM-Kt-qfN"/>
+                    <connections>
+                        <outlet property="payButton" destination="uaE-BT-iaf" id="0BR-KY-6in"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1064" y="299"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qhv-iE-2Wi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lIZ-La-7d4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vc8-0n-PvA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="h57-AM-Tmg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNs-VT-SIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="-394"/>
         </scene>
     </scenes>
     <resources>
         <image name="pay_bg" width="320" height="568"/>
+        <image name="wallet-50" width="50" height="50"/>
     </resources>
 </document>
