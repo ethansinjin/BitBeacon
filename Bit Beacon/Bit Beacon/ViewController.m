@@ -28,11 +28,17 @@
 }
 
 -(void) updateStatus{
-    
+    if (_priceField.text.length == 0)
+    {
+        NSLog (@"Field is empty");
+    }
+    else
+    {
+        NSLog (@"Field has some data");
         [_chargeButton setTitle:@"Charging..." forState:UIControlStateDisabled];
         [_chargeButton setEnabled:NO];
         [_statusIcon setImage:[UIImage imageNamed:@"signal"]];
-
+    }
 }
 
 - (IBAction)buttonTapped:(UIButton *)sender {
