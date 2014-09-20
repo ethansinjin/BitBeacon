@@ -14,6 +14,8 @@
 		AF165E9419CD1FCA003D8F7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF165E9319CD1FCA003D8F7D /* Images.xcassets */; };
 		AF165E9719CD1FCA003D8F7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF165E9519CD1FCA003D8F7D /* LaunchScreen.xib */; };
 		AF165EA319CD1FCB003D8F7D /* BitBoatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EA219CD1FCB003D8F7D /* BitBoatTests.m */; };
+		AF165EB319CD2870003D8F7D /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */; };
+		AF165EB419CD2870003D8F7D /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB219CD2870003D8F7D /* FBShimmeringView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,12 @@
 		AF165E9C19CD1FCB003D8F7D /* BitBoatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBoatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF165EA119CD1FCB003D8F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF165EA219CD1FCB003D8F7D /* BitBoatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBoatTests.m; sourceTree = "<group>"; };
+		AF165EAD19CD2870003D8F7D /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
+		AF165EAE19CD2870003D8F7D /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		AF165EAF19CD2870003D8F7D /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		AF165EB119CD2870003D8F7D /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		AF165EB219CD2870003D8F7D /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 				AF165E9019CD1FCA003D8F7D /* Main.storyboard */,
 				AF165E9319CD1FCA003D8F7D /* Images.xcassets */,
 				AF165E9519CD1FCA003D8F7D /* LaunchScreen.xib */,
+				AF165EAC19CD2870003D8F7D /* FBShimmering */,
 				AF165E8619CD1FCA003D8F7D /* Supporting Files */,
 			);
 			path = BitBoat;
@@ -117,6 +126,19 @@
 				AF165EA119CD1FCB003D8F7D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AF165EAC19CD2870003D8F7D /* FBShimmering */ = {
+			isa = PBXGroup;
+			children = (
+				AF165EAD19CD2870003D8F7D /* FBShimmering-Prefix.pch */,
+				AF165EAE19CD2870003D8F7D /* FBShimmering.h */,
+				AF165EAF19CD2870003D8F7D /* FBShimmeringLayer.h */,
+				AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */,
+				AF165EB119CD2870003D8F7D /* FBShimmeringView.h */,
+				AF165EB219CD2870003D8F7D /* FBShimmeringView.m */,
+			);
+			path = FBShimmering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +190,7 @@
 				TargetAttributes = {
 					AF165E8219CD1FCA003D8F7D = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = K2P452F89V;
 					};
 					AF165E9B19CD1FCB003D8F7D = {
 						CreatedOnToolsVersion = 6.0;
@@ -221,6 +244,8 @@
 			files = (
 				AF165E8F19CD1FCA003D8F7D /* ViewController.m in Sources */,
 				AF165E8C19CD1FCA003D8F7D /* AppDelegate.m in Sources */,
+				AF165EB319CD2870003D8F7D /* FBShimmeringLayer.m in Sources */,
+				AF165EB419CD2870003D8F7D /* FBShimmeringView.m in Sources */,
 				AF165E8919CD1FCA003D8F7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,9 +368,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BitBoat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -353,9 +382,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BitBoat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -412,6 +445,7 @@
 				AF165EA819CD1FCB003D8F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF165EA919CD1FCB003D8F7D /* Build configuration list for PBXNativeTarget "BitBoatTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +454,7 @@
 				AF165EAB19CD1FCB003D8F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
