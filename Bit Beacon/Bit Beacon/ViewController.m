@@ -10,12 +10,15 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *statusIcon;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -23,5 +26,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) updateStatus{
+    
+        [_chargeButton setTitle:@"Charging..." forState:UIControlStateDisabled];
+        [_chargeButton setEnabled:NO];
+        [_statusIcon setImage:[UIImage imageNamed:@"signal"]];
+
+}
+
+- (IBAction)buttonTapped:(UIButton *)sender {
+    [self updateStatus];
+}
+
 
 @end

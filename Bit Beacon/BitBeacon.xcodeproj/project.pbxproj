@@ -13,18 +13,7 @@
 		8C9B145119CE034C00E90496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B144F19CE034C00E90496 /* Main.storyboard */; };
 		8C9B145319CE034C00E90496 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B145219CE034C00E90496 /* Images.xcassets */; };
 		8C9B145619CE034C00E90496 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B145419CE034C00E90496 /* LaunchScreen.xib */; };
-		8C9B146219CE034C00E90496 /* Bit_BeaconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9B146119CE034C00E90496 /* Bit_BeaconTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8C9B145C19CE034C00E90496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C9B143A19CE034C00E90496 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C9B144119CE034C00E90496;
-			remoteInfo = "Bit Beacon";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8C9B144219CE034C00E90496 /* BitBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,20 +26,12 @@
 		8C9B145019CE034C00E90496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C9B145219CE034C00E90496 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8C9B145519CE034C00E90496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8C9B145B19CE034C00E90496 /* BitBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9B146019CE034C00E90496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C9B146119CE034C00E90496 /* Bit_BeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bit_BeaconTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8C9B143F19CE034C00E90496 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C9B145819CE034C00E90496 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				8C9B144219CE034C00E90496 /* BitBeacon.app */,
-				8C9B145B19CE034C00E90496 /* BitBeaconTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,24 +119,6 @@
 			productReference = 8C9B144219CE034C00E90496 /* BitBeacon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8C9B145A19CE034C00E90496 /* BitBeaconTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8C9B146819CE034C00E90496 /* Build configuration list for PBXNativeTarget "BitBeaconTests" */;
-			buildPhases = (
-				8C9B145719CE034C00E90496 /* Sources */,
-				8C9B145819CE034C00E90496 /* Frameworks */,
-				8C9B145919CE034C00E90496 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8C9B145D19CE034C00E90496 /* PBXTargetDependency */,
-			);
-			name = BitBeaconTests;
-			productName = "Bit BeaconTests";
-			productReference = 8C9B145B19CE034C00E90496 /* BitBeaconTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -169,10 +131,6 @@
 					8C9B144119CE034C00E90496 = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = VWJRY9T89T;
-					};
-					8C9B145A19CE034C00E90496 = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 8C9B144119CE034C00E90496;
 					};
 				};
 			};
@@ -190,7 +148,6 @@
 			projectRoot = "";
 			targets = (
 				8C9B144119CE034C00E90496 /* BitBeacon */,
-				8C9B145A19CE034C00E90496 /* BitBeaconTests */,
 			);
 		};
 /* End PBXProject section */
@@ -203,13 +160,6 @@
 				8C9B145119CE034C00E90496 /* Main.storyboard in Resources */,
 				8C9B145619CE034C00E90496 /* LaunchScreen.xib in Resources */,
 				8C9B145319CE034C00E90496 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C9B145919CE034C00E90496 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,23 +176,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C9B145719CE034C00E90496 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8C9B146219CE034C00E90496 /* Bit_BeaconTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8C9B145D19CE034C00E90496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8C9B144119CE034C00E90496 /* BitBeacon */;
-			targetProxy = 8C9B145C19CE034C00E90496 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8C9B144F19CE034C00E90496 /* Main.storyboard */ = {
@@ -362,40 +296,6 @@
 			};
 			name = Release;
 		};
-		8C9B146919CE034C00E90496 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Bit BeaconTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BitBeaconTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bit Beacon.app/Bit Beacon";
-			};
-			name = Debug;
-		};
-		8C9B146A19CE034C00E90496 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Bit BeaconTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BitBeaconTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bit Beacon.app/Bit Beacon";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,14 +313,6 @@
 			buildConfigurations = (
 				8C9B146619CE034C00E90496 /* Debug */,
 				8C9B146719CE034C00E90496 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		8C9B146819CE034C00E90496 /* Build configuration list for PBXNativeTarget "BitBeaconTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8C9B146919CE034C00E90496 /* Debug */,
-				8C9B146A19CE034C00E90496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
