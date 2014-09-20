@@ -28,7 +28,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sail_boat-50" translatesAutoresizingMaskIntoConstraints="NO" id="PhI-9Z-p8F">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sail_boat" translatesAutoresizingMaskIntoConstraints="NO" id="PhI-9Z-p8F">
                     <rect key="frame" x="176" y="82" width="128" height="128"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="EgL-L2-sVJ"/>
@@ -59,6 +59,6 @@
     </objects>
     <resources>
         <image name="pay_bg" width="320" height="568"/>
-        <image name="sail_boat-50" width="128" height="128"/>
+        <image name="sail_boat" width="128" height="128"/>
     </resources>
 </document>

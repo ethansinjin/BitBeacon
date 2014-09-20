@@ -60,7 +60,7 @@
                                     <action selector="payPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="v7f-S2-pB5"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-50" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-Mt-PMY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-Mt-PMY">
                                 <rect key="frame" x="236" y="96" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="1ig-bW-9kC"/>
@@ -95,7 +95,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Wallet" id="Ql1-XH-YW0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="btcPrice" destination="xEp-CY-P3R" id="DSP-a6-JEe"/>
+                        <outlet property="companyName" destination="zha-Gt-ePG" id="lBp-mp-sQm"/>
                         <outlet property="payButton" destination="uaE-BT-iaf" id="0BR-KY-6in"/>
+                        <outlet property="statusImage" destination="DH6-Mt-PMY" id="gul-2a-9q9"/>
+                        <outlet property="usdPrice" destination="H7v-aG-k7a" id="TMY-SU-84P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -123,6 +127,6 @@
     </scenes>
     <resources>
         <image name="pay_bg" width="320" height="568"/>
-        <image name="wallet-50" width="128" height="128"/>
+        <image name="wallet" width="128" height="128"/>
     </resources>
 </document>

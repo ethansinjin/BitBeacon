@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *statusImage;
+@property (strong, nonatomic) IBOutlet UILabel *companyName;
+@property (strong, nonatomic) IBOutlet UILabel *usdPrice;
+@property (strong, nonatomic) IBOutlet UILabel *btcPrice;
 
 
 @end

@@ -22,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_statusImage setImage:[UIImage imageNamed:@"signal"]];
+    [_payButton setEnabled:NO];
+    [_payButton setTitle:@"Searching for Bill" forState:UIControlStateDisabled];
+    [_companyName setHidden:YES];
+    [_usdPrice setHidden:YES];
+    [_btcPrice setHidden:YES];
     // Do any additional setup after loading the view, typically from a nib.
     
    
