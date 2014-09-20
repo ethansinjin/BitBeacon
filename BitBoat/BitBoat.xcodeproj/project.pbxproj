@@ -223,10 +223,11 @@
 				TargetAttributes = {
 					AF165E8219CD1FCA003D8F7D = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = VWJRY9T89T;
+						DevelopmentTeam = K2P452F89V;
 					};
 					AF165E9B19CD1FCB003D8F7D = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = K2P452F89V;
 						TestTargetID = AF165E8219CD1FCA003D8F7D;
 					};
 				};
