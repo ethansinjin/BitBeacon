@@ -61,10 +61,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet-50" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-Mt-PMY">
-                                <rect key="frame" x="275" y="174" width="50" height="50"/>
+                                <rect key="frame" x="236" y="96" width="128" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="hfo-RZ-2Xn"/>
-                                    <constraint firstAttribute="height" constant="50" id="l4R-Wj-w2c"/>
+                                    <constraint firstAttribute="height" constant="128" id="1ig-bW-9kC"/>
+                                    <constraint firstAttribute="width" constant="128" id="by4-J9-RGU"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -74,7 +74,6 @@
                             <constraint firstItem="uaE-BT-iaf" firstAttribute="centerX" secondItem="ltE-Dq-DjQ" secondAttribute="centerX" id="A2z-yi-G1k"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="uaE-BT-iaf" secondAttribute="bottom" constant="51" id="HeM-yw-j3o"/>
                             <constraint firstItem="xEp-CY-P3R" firstAttribute="top" secondItem="H7v-aG-k7a" secondAttribute="bottom" constant="8" symbolic="YES" id="IE2-Hn-4E2"/>
-                            <constraint firstItem="DH6-Mt-PMY" firstAttribute="centerX" secondItem="zha-Gt-ePG" secondAttribute="centerX" id="L2B-tS-f4J"/>
                             <constraint firstItem="xEp-CY-P3R" firstAttribute="trailing" secondItem="H7v-aG-k7a" secondAttribute="trailing" id="Ljb-FN-ogY"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Psl-Tf-EDP"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="QtS-XI-k9y"/>
@@ -83,11 +82,12 @@
                             <constraint firstItem="H7v-aG-k7a" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Unq-cJ-oWT"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="WHc-fp-Gjm"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="leading" secondItem="jyV-Pf-zRb" secondAttribute="leading" id="a7O-aX-suy"/>
+                            <constraint firstItem="DH6-Mt-PMY" firstAttribute="centerX" secondItem="zha-Gt-ePG" secondAttribute="centerX" id="kgi-dK-866"/>
                             <constraint firstItem="xEp-CY-P3R" firstAttribute="leading" secondItem="H7v-aG-k7a" secondAttribute="leading" id="oGY-HG-Zr6"/>
                             <constraint firstItem="ltE-Dq-DjQ" firstAttribute="trailing" secondItem="2fi-mo-0CV" secondAttribute="trailing" id="pE6-2h-6Py"/>
                             <constraint firstItem="H7v-aG-k7a" firstAttribute="centerY" secondItem="ltE-Dq-DjQ" secondAttribute="centerY" id="pM6-OS-OMS"/>
                             <constraint firstItem="H7v-aG-k7a" firstAttribute="top" secondItem="zha-Gt-ePG" secondAttribute="bottom" constant="8" symbolic="YES" id="qGB-54-6R8"/>
-                            <constraint firstItem="zha-Gt-ePG" firstAttribute="top" secondItem="DH6-Mt-PMY" secondAttribute="bottom" constant="8" symbolic="YES" id="xwt-Nf-s7l"/>
+                            <constraint firstItem="zha-Gt-ePG" firstAttribute="top" secondItem="DH6-Mt-PMY" secondAttribute="bottom" constant="8" symbolic="YES" id="tss-lu-8b6"/>
                             <constraint firstItem="zha-Gt-ePG" firstAttribute="trailing" secondItem="H7v-aG-k7a" secondAttribute="trailing" id="zjq-Bt-AxA"/>
                         </constraints>
                     </view>
@@ -123,6 +123,6 @@
     </scenes>
     <resources>
         <image name="pay_bg" width="320" height="568"/>
-        <image name="wallet-50" width="50" height="50"/>
+        <image name="wallet-50" width="128" height="128"/>
     </resources>
 </document>
