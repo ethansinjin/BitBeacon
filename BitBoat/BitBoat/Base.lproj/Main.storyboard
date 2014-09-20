@@ -91,7 +91,9 @@
                             <constraint firstItem="zha-Gt-ePG" firstAttribute="trailing" secondItem="H7v-aG-k7a" secondAttribute="trailing" id="zjq-Bt-AxA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="BitBoat" id="QDM-Kt-qfN"/>
+                    <navigationItem key="navigationItem" title="BitBoat" id="QDM-Kt-qfN">
+                        <barButtonItem key="leftBarButtonItem" title="Wallet" id="Ql1-XH-YW0"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="payButton" destination="uaE-BT-iaf" id="0BR-KY-6in"/>
                     </connections>

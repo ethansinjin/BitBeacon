@@ -17,6 +17,10 @@
 		AF165EB319CD2870003D8F7D /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB019CD2870003D8F7D /* FBShimmeringLayer.m */; };
 		AF165EB419CD2870003D8F7D /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB219CD2870003D8F7D /* FBShimmeringView.m */; };
 		AF165EB619CD2BBE003D8F7D /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */; };
+		AF165EBF19CD4450003D8F7D /* JGBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EB919CD4450003D8F7D /* JGBeacon.m */; };
+		AF165EC019CD4450003D8F7D /* JGReceiveBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EBB19CD4450003D8F7D /* JGReceiveBeacon.m */; };
+		AF165EC119CD4450003D8F7D /* JGSendBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = AF165EBD19CD4450003D8F7D /* JGSendBeacon.m */; };
+		AF165EC319CD4467003D8F7D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF165EC219CD4467003D8F7D /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,14 @@
 		AF165EB119CD2870003D8F7D /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		AF165EB219CD2870003D8F7D /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		AF165EB819CD4450003D8F7D /* JGBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGBeacon.h; sourceTree = "<group>"; };
+		AF165EB919CD4450003D8F7D /* JGBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGBeacon.m; sourceTree = "<group>"; };
+		AF165EBA19CD4450003D8F7D /* JGReceiveBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGReceiveBeacon.h; sourceTree = "<group>"; };
+		AF165EBB19CD4450003D8F7D /* JGReceiveBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGReceiveBeacon.m; sourceTree = "<group>"; };
+		AF165EBC19CD4450003D8F7D /* JGSendBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGSendBeacon.h; sourceTree = "<group>"; };
+		AF165EBD19CD4450003D8F7D /* JGSendBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGSendBeacon.m; sourceTree = "<group>"; };
+		AF165EBE19CD4450003D8F7D /* TransferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferService.h; sourceTree = "<group>"; };
+		AF165EC219CD4467003D8F7D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF165EC319CD4467003D8F7D /* CoreBluetooth.framework in Frameworks */,
 				AF165EB619CD2BBE003D8F7D /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +112,7 @@
 				AF165E9019CD1FCA003D8F7D /* Main.storyboard */,
 				AF165E9319CD1FCA003D8F7D /* Images.xcassets */,
 				AF165E9519CD1FCA003D8F7D /* LaunchScreen.xib */,
+				AF165EB719CD4450003D8F7D /* JGBeacon */,
 				AF165EAC19CD2870003D8F7D /* FBShimmering */,
 				AF165E8619CD1FCA003D8F7D /* Supporting Files */,
 			);
@@ -108,6 +122,7 @@
 		AF165E8619CD1FCA003D8F7D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF165EC219CD4467003D8F7D /* CoreBluetooth.framework */,
 				AF165EB519CD2BBE003D8F7D /* LocalAuthentication.framework */,
 				AF165E8719CD1FCA003D8F7D /* Info.plist */,
 				AF165E8819CD1FCA003D8F7D /* main.m */,
@@ -143,6 +158,20 @@
 				AF165EB219CD2870003D8F7D /* FBShimmeringView.m */,
 			);
 			path = FBShimmering;
+			sourceTree = "<group>";
+		};
+		AF165EB719CD4450003D8F7D /* JGBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				AF165EB819CD4450003D8F7D /* JGBeacon.h */,
+				AF165EB919CD4450003D8F7D /* JGBeacon.m */,
+				AF165EBA19CD4450003D8F7D /* JGReceiveBeacon.h */,
+				AF165EBB19CD4450003D8F7D /* JGReceiveBeacon.m */,
+				AF165EBC19CD4450003D8F7D /* JGSendBeacon.h */,
+				AF165EBD19CD4450003D8F7D /* JGSendBeacon.m */,
+				AF165EBE19CD4450003D8F7D /* TransferService.h */,
+			);
+			path = JGBeacon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +278,10 @@
 				AF165E8F19CD1FCA003D8F7D /* ViewController.m in Sources */,
 				AF165E8C19CD1FCA003D8F7D /* AppDelegate.m in Sources */,
 				AF165EB319CD2870003D8F7D /* FBShimmeringLayer.m in Sources */,
+				AF165EC019CD4450003D8F7D /* JGReceiveBeacon.m in Sources */,
+				AF165EC119CD4450003D8F7D /* JGSendBeacon.m in Sources */,
 				AF165EB419CD2870003D8F7D /* FBShimmeringView.m in Sources */,
+				AF165EBF19CD4450003D8F7D /* JGBeacon.m in Sources */,
 				AF165E8919CD1FCA003D8F7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
