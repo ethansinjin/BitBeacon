@@ -19,8 +19,11 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BitBoat" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="441" height="43"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sail_boat-50" translatesAutoresizingMaskIntoConstraints="NO" id="PhI-9Z-p8F">
+                    <rect key="frame" x="215" y="128" width="50" height="50"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BitBoat" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                    <rect key="frame" x="20" y="186" width="441" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="yyz-D2-s0C"/>
                     </constraints>
@@ -33,12 +36,14 @@
             <constraints>
                 <constraint firstItem="HZO-oK-Bb5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8Tb-IJ-jd5"/>
                 <constraint firstAttribute="bottom" secondItem="HZO-oK-Bb5" secondAttribute="bottom" id="9KE-iU-Kq7"/>
+                <constraint firstItem="PhI-9Z-p8F" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="8" symbolic="YES" id="Ct3-78-emh"/>
                 <constraint firstItem="HZO-oK-Bb5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EWj-RZ-cO2"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="Fz6-Jm-sle"/>
                 <constraint firstItem="HZO-oK-Bb5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GxJ-bt-hZy"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstItem="PhI-9Z-p8F" firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="c71-dg-Hv6"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="cjg-Ub-6Dw"/>
                 <constraint firstAttribute="trailing" secondItem="HZO-oK-Bb5" secondAttribute="trailing" id="i3e-Bp-JeI"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="iLO-C5-sre"/>
@@ -50,5 +55,6 @@
     </objects>
     <resources>
         <image name="pay_bg" width="320" height="568"/>
+        <image name="sail_boat-50" width="50" height="50"/>
     </resources>
 </document>
