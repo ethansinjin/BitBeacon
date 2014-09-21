@@ -10,5 +10,6 @@
 
 @interface NewSaleViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *companyNameTextField;
+@property (strong, nonatomic) IBOutlet UIButton *rebroadcastButton;
 
 @end

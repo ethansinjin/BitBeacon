@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "432983863.8758"
+            timestampString = "432994943.204039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-getBTCAddress"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "@implementation NewSaleViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bit Beacon/NewSaleViewController.m"
+            timestampString = "432994943.204039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "432983859.993362"
+            timestampString = "432994943.204039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-getBTCAddress"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,45 +58,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "432984767.855971"
+            timestampString = "432994943.204039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "-sendData"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-getBTCStatus"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "432984767.855971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "-peripheralManager:central:didSubscribeToCharacteristic:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "432984767.855971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "-peripheralManager:central:didSubscribeToCharacteristic:"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[NewSaleViewController getBTCStatus]_block_invoke"
+                  moduleName = "BitBeacon"
+                  urlString = "file:///Users/ethangillius/Developer/BitBoat/Bit%20Beacon/Bit%20Beacon/NewSaleViewController.m"
+                  timestampString = "432994500.105792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[NewSaleViewController getBTCStatus]_block_invoke"
+                  moduleName = "BitBeacon"
+                  urlString = "file:///Users/ethangillius/Developer/BitBoat/Bit%20Beacon/Bit%20Beacon/NewSaleViewController.m"
+                  timestampString = "432994500.106054"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "404">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -129,6 +129,19 @@
                                     <rect key="frame" x="236" y="52" width="128" height="128"/>
                                 </variation>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRI-CA-qLk">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Having Trouble? Rebroadcast Payment Request">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="136" y="762" width="329" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="rebroadcast:" destination="Fiw-ql-ojc" eventType="touchUpInside" id="axx-U6-d4D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -157,6 +170,7 @@
                                 <exclude reference="uVS-SJ-Wnv"/>
                                 <exclude reference="tzU-fY-ruo"/>
                                 <exclude reference="aEt-z6-SfX"/>
+                                <exclude reference="tRI-CA-qLk"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="22N-ui-wMD"/>
@@ -185,6 +199,7 @@
                                 <include reference="uVS-SJ-Wnv"/>
                                 <include reference="tzU-fY-ruo"/>
                                 <include reference="aEt-z6-SfX"/>
+                                <include reference="tRI-CA-qLk"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="22N-ui-wMD"/>
@@ -219,6 +234,7 @@
                         <outlet property="BTCTextField" destination="tzU-fY-ruo" id="91l-db-s6z"/>
                         <outlet property="companyNameTextField" destination="uVS-SJ-Wnv" id="8Gc-f6-65Q"/>
                         <outlet property="moneyTextField" destination="biD-Qm-vvV" id="rlT-AB-fCn"/>
+                        <outlet property="rebroadcastButton" destination="tRI-CA-qLk" id="t7j-5t-95a"/>
                         <outlet property="statusImage" destination="aEt-z6-SfX" id="oH3-NM-IjA"/>
                     </connections>
                 </viewController>

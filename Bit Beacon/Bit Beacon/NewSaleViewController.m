@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) int sessionFailureCount;
 @property (nonatomic, strong) NSString *currentTransactionURL;
+@property (nonatomic, strong) NSString *currentTransactionID;
+@property (nonatomic, strong) NSString *currentStatus;
 @property (nonatomic, strong) NSString *walletAddress;
 @property (nonatomic, strong) NSString *authString;
 @property (nonatomic, strong) NSString *bluetoothFinalString;
@@ -117,6 +119,8 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
         NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
         _currentTransactionURL = [json objectForKey:@"url"];
+        _currentTransactionID = [json objectForKey:@"id"];
+        _currentStatus = [json objectForKey:@"status"];
         _BTCCost = [json objectForKey:@"btcPrice"];
         [self getBTCAddress];
     }];
@@ -158,11 +162,17 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
                               options:kNilOptions
                               error:&error];*/
         NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
+        //NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
         //_currentTransactionURL = [json objectForKey:@"url"];
-        //TODO: This is a dummy address because BitPay test server does not respond to the correct Accept stuff
+        //PARSING the address super hacky like, because BitPay recommended that we do this
         
-        _walletAddress=@"msj42CCGruhRsFrGATiUuh25dtxYtnpbTx";
+        NSRange range = [dataAsString rangeOfString:@"bitcoin:"];
+        NSString *newString = [dataAsString substringFromIndex:range.location];
+        //TODO: this is pretty inefficient
+        NSArray* arrayOfStrings = [newString componentsSeparatedByString: @"?"];
+        _walletAddress = [[[arrayOfStrings objectAtIndex: 0] componentsSeparatedByString:@":"] objectAtIndex:1];
+        NSLog(@"Wallet Address %@",_walletAddress);
+        //_walletAddress=@"msj42CCGruhRsFrGATiUuh25dtxYtnpbTx";
         _bluetoothFinalString = [NSString stringWithFormat:@"%@:%@:%@",[_companyNameTextField text],_walletAddress,_BTCCost];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^
          {
@@ -174,6 +184,57 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     }];
     [invcheckDataTask resume];
 
+}
+
+-(void) getBTCStatus{
+    
+    if(![_currentStatus isEqualToString:@"new"]){
+        //the transaction has gone through.
+        //TODO: some sort of complete alert!
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+    NSURLSessionConfiguration *sessionConfig =
+    [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 30.0;
+    sessionConfig.timeoutIntervalForResource = 60.0;
+    sessionConfig.HTTPMaximumConnectionsPerHost = 1;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    sessionConfig.HTTPAdditionalHeaders = @{@"Content-Type": @"application/json",
+                                            @"Authorization": self.authString
+                                            };
+
+    NSURL *invoiceIDUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://test.bitpay.com/api/invoice/%@",_currentTransactionID]];
+    
+    NSMutableURLRequest *invoiceIDRequest = [NSMutableURLRequest requestWithURL:invoiceIDUrl];
+    invoiceIDRequest.HTTPMethod = @"GET";
+    
+    NSURLSessionDataTask *invcheckDataTask = [session dataTaskWithRequest:invoiceIDRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+        NSInteger statusCode = [HTTPResponse statusCode];
+        NSLog(@"STATUS CODE: %ld",(long)statusCode);
+        NSDictionary* json = [NSJSONSerialization
+         JSONObjectWithData:data
+         
+         options:kNilOptions
+         error:&error];
+//        NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//        NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
+        _currentStatus = [json objectForKey:@"status"];
+        
+        
+    }];
+    [invcheckDataTask resume];
+    }
+}
+
+- (IBAction)rebroadcast:(id)sender {
+    if(_bluetoothFinalString){
+        [self.peripheralManager stopAdvertising];
+        
+        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+        
+        [_rebroadcastButton setTitle:@"Beacon Rebroadcasted" forState:UIControlStateNormal];
+    }
 }
 
 -(void) beginBroadcasting {
@@ -188,6 +249,14 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
         [_companyNameTextField setEnabled:NO];
         
         [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+        
+        [_rebroadcastButton setHidden:NO];
+        
+        [NSTimer scheduledTimerWithTimeInterval:5.0
+                                         target:self
+                                       selector:@selector(getBTCStatus)
+                                       userInfo:nil
+                                        repeats:YES];
     }
 }
 
