@@ -64,6 +64,9 @@
     
     [super viewWillDisappear:animated];
 }
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation
@@ -252,7 +255,6 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     if(_bluetoothFinalString){
         [_statusImage setImage:[UIImage imageNamed:@"signal"]];
         //bluetooth
-        
         [_moneyTextField setEnabled:NO];
         //TODO: BTCTextField might not be initialized, so this might crash!
         

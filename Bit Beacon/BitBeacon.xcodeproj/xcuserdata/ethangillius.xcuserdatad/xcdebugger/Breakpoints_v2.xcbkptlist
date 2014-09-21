@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bit Beacon/NewSaleViewController.m"
-            timestampString = "433000764.356187"
+            timestampString = "433003255.136509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-getBTCStatus"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-getBTCAddress"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

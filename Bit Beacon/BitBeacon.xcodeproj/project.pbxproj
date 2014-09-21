@@ -15,7 +15,6 @@
 		8C9B145319CE034C00E90496 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B145219CE034C00E90496 /* Images.xcassets */; };
 		8C9B145619CE034C00E90496 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B145419CE034C00E90496 /* LaunchScreen.xib */; };
 		AF52284D19CEC89700AEAD3C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF52284B19CEC88A00AEAD3C /* CoreBluetooth.framework */; };
-		AF52285019CF07F200AEAD3C /* OuterShellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF52284F19CF07F200AEAD3C /* OuterShellViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +34,6 @@
 		8C9B146119CE034C00E90496 /* Bit_BeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bit_BeaconTests.m; sourceTree = "<group>"; };
 		AF52284A19CEC87F00AEAD3C /* TransferService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransferService.h; path = "../../../../Downloads/BTLE_Transfer/BTLE Transfer/TransferService.h"; sourceTree = "<group>"; };
 		AF52284B19CEC88A00AEAD3C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		AF52284E19CF07F200AEAD3C /* OuterShellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OuterShellViewController.h; sourceTree = "<group>"; };
-		AF52284F19CF07F200AEAD3C /* OuterShellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OuterShellViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +73,6 @@
 				8C9B144C19CE034C00E90496 /* ViewController.h */,
 				8C9B144D19CE034C00E90496 /* ViewController.m */,
 				8C9B144F19CE034C00E90496 /* Main.storyboard */,
-				AF52284E19CF07F200AEAD3C /* OuterShellViewController.h */,
-				AF52284F19CF07F200AEAD3C /* OuterShellViewController.m */,
 				8C91655219CE8DA700514DCB /* NewSaleViewController.h */,
 				8C91655319CE8DA700514DCB /* NewSaleViewController.m */,
 				8C9B145219CE034C00E90496 /* Images.xcassets */,
@@ -186,7 +181,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF52285019CF07F200AEAD3C /* OuterShellViewController.m in Sources */,
 				8C91655419CE8DA700514DCB /* NewSaleViewController.m in Sources */,
 				8C9B144E19CE034C00E90496 /* ViewController.m in Sources */,
 				8C9B144B19CE034C00E90496 /* AppDelegate.m in Sources */,
