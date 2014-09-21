@@ -10,6 +10,8 @@
 
 @interface AppDelegate ()
 
+
+
 @end
 
 @implementation AppDelegate
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _lastSaleAmount = 0.00;
+    _totalProfit = 0.00;
+    _numberOfSales = 0;
     return YES;
 }
 

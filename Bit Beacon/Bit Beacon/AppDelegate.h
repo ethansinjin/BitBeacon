@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (assign,nonatomic) int numberOfSales;
+@property (assign,nonatomic) double totalProfit;
+@property (assign,nonatomic) double lastSaleAmount;
 
 @end
 

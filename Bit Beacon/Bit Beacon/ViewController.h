@@ -10,8 +10,7 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *chargeButton;
-@property (weak, nonatomic) IBOutlet UITextField *priceField;
 
 @end
+
 

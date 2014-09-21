@@ -21,29 +21,167 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0037" translatesAutoresizingMaskIntoConstraints="NO" id="VdF-XN-k6S">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6b-CI-piF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Profit:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ll-5t-OUM">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="149" width="87" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Sales:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lh-3a-Kle">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="120" width="133" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCX-C7-2mf">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="179" y="120" width="133" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Sale Amount:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdQ-aM-4dV">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="178" width="141" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XC-6x-Yd4">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="179" y="149" width="133" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2P-zP-AAx">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="179" y="178" width="133" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zze-i7-COG">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="9xM-PW-0du"/>
+                                    <constraint firstAttribute="centerX" secondItem="zze-i7-COG" secondAttribute="centerX" id="Gsc-H9-hnv"/>
+                                    <constraint firstAttribute="height" constant="320" id="c9x-bL-67b"/>
+                                    <constraint firstItem="zze-i7-COG" firstAttribute="top" secondItem="W6b-CI-piF" secondAttribute="top" constant="16" id="qlA-GB-rhR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="2Ll-5t-OUM"/>
+                                        <exclude reference="4lh-3a-Kle"/>
+                                        <exclude reference="gCX-C7-2mf"/>
+                                        <exclude reference="xdQ-aM-4dV"/>
+                                        <exclude reference="8XC-6x-Yd4"/>
+                                        <exclude reference="O2P-zP-AAx"/>
+                                        <exclude reference="zze-i7-COG"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="9xM-PW-0du"/>
+                                        <exclude reference="c9x-bL-67b"/>
+                                        <exclude reference="Gsc-H9-hnv"/>
+                                        <exclude reference="qlA-GB-rhR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="2Ll-5t-OUM"/>
+                                        <include reference="4lh-3a-Kle"/>
+                                        <include reference="gCX-C7-2mf"/>
+                                        <include reference="xdQ-aM-4dV"/>
+                                        <include reference="8XC-6x-Yd4"/>
+                                        <include reference="O2P-zP-AAx"/>
+                                        <include reference="zze-i7-COG"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="9xM-PW-0du"/>
+                                        <include reference="c9x-bL-67b"/>
+                                        <include reference="Gsc-H9-hnv"/>
+                                        <include reference="qlA-GB-rhR"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VdF-XN-k6S" secondAttribute="bottom" id="1G3-VS-8Fi"/>
+                            <constraint firstItem="W6b-CI-piF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="140" id="2Fi-SZ-2CE"/>
                             <constraint firstItem="VdF-XN-k6S" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Fib-kK-O9d"/>
                             <constraint firstItem="VdF-XN-k6S" firstAttribute="leading" secondItem="2fi-mo-0CV" secondAttribute="leading" id="Fsf-fe-abz"/>
+                            <constraint firstItem="W6b-CI-piF" firstAttribute="centerX" secondItem="VdF-XN-k6S" secondAttribute="centerX" id="UNS-ny-cdi"/>
+                            <constraint firstItem="W6b-CI-piF" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="176" id="bjg-4E-rqO"/>
                             <constraint firstItem="VdF-XN-k6S" firstAttribute="trailing" secondItem="2fi-mo-0CV" secondAttribute="trailing" id="iDY-CM-TDw"/>
                             <constraint firstAttribute="trailing" secondItem="VdF-XN-k6S" secondAttribute="trailing" id="iOn-HI-XWR"/>
                             <constraint firstItem="VdF-XN-k6S" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="omH-cK-JXr"/>
+                            <constraint firstItem="W6b-CI-piF" firstAttribute="centerY" secondItem="VdF-XN-k6S" secondAttribute="centerY" id="rlp-wA-1dE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="W6b-CI-piF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2Fi-SZ-2CE"/>
+                                <exclude reference="UNS-ny-cdi"/>
+                                <exclude reference="bjg-4E-rqO"/>
+                                <exclude reference="rlp-wA-1dE"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="W6b-CI-piF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2Fi-SZ-2CE"/>
+                                <include reference="UNS-ny-cdi"/>
+                                <exclude reference="bjg-4E-rqO"/>
+                                <include reference="rlp-wA-1dE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="BitBeacon" id="Bol-qA-qrO">
                         <barButtonItem key="rightBarButtonItem" title="New Sale" id="wwQ-d5-SV3">
                             <connections>
-                                <action selector="newSale:" destination="vXZ-lx-hvc" id="6wA-UX-qsV"/>
-                                <segue destination="YTN-Pf-zjJ" kind="presentation" modalPresentationStyle="formSheet" id="zns-Iq-xiS"/>
+                                <action selector="newSale:" destination="vXZ-lx-hvc" id="gHb-ty-kqA"/>
+                                <segue destination="YTN-Pf-zjJ" kind="presentation" modalPresentationStyle="formSheet" id="oBc-B2-0eW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="lastSaleAmountL" destination="O2P-zP-AAx" id="tiL-t1-2d8"/>
+                        <outlet property="numberOfSalesL" destination="gCX-C7-2mf" id="AeJ-JO-Tbb"/>
+                        <outlet property="summaryView" destination="W6b-CI-piF" id="14a-fe-G4g"/>
+                        <outlet property="totalProfitL" destination="8XC-6x-Yd4" id="DcV-QD-AmV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763" y="135.75"/>
+            <point key="canvasLocation" x="1827" y="273.75"/>
         </scene>
         <!--New Sale-->
         <scene sceneID="gxT-M9-UAd">
@@ -233,6 +371,7 @@
                     <connections>
                         <outlet property="BTCTextField" destination="tzU-fY-ruo" id="91l-db-s6z"/>
                         <outlet property="companyNameTextField" destination="uVS-SJ-Wnv" id="8Gc-f6-65Q"/>
+                        <outlet property="initiateButton" destination="lRd-Vb-BsH" id="uJE-tg-YhP"/>
                         <outlet property="moneyTextField" destination="biD-Qm-vvV" id="rlT-AB-fCn"/>
                         <outlet property="rebroadcastButton" destination="tRI-CA-qLk" id="t7j-5t-95a"/>
                         <outlet property="statusImage" destination="aEt-z6-SfX" id="oH3-NM-IjA"/>

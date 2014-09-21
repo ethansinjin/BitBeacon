@@ -7,6 +7,7 @@
 //
 
 #import "NewSaleViewController.h"
+#import "AppDelegate.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "TransferService.h"
 #define NOTIFY_MTU      20
@@ -24,11 +25,13 @@
 @property (nonatomic, strong) NSString *walletAddress;
 @property (nonatomic, strong) NSString *authString;
 @property (nonatomic, strong) NSString *bluetoothFinalString;
+@property (nonatomic, strong) NSDecimalNumber *amount;
 
 @property (strong, nonatomic) CBPeripheralManager       *peripheralManager;
 @property (strong, nonatomic) CBMutableCharacteristic   *transferCharacteristic;
 @property (strong, nonatomic) NSData                    *dataToSend;
 @property (nonatomic, readwrite) NSInteger              sendDataIndex;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *initiateButton;
 
 @end
 
@@ -72,10 +75,13 @@
 }
 */
 - (IBAction)initiateSale:(id)sender {
+    
+    [_initiateButton setEnabled:NO];
+    
 
     NSString *apiKey = @"6LWSFXwV0wkASU72sxLWFoe8gxQCI7sP8S3jcJm78";
     
-    NSDecimalNumber *amount = [self getCurrency];
+    _amount = [self getCurrency];
     
     NSURLSessionConfiguration *sessionConfig =
     [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -93,7 +99,7 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
 
     
     NSDictionary *jsonDict = @{
-                               @"price": amount,
+                               @"price": _amount,
                                @"currency":@"USD",
                                @"transactionSpeed":@"high"
                                };
@@ -191,6 +197,11 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     if(![_currentStatus isEqualToString:@"new"]){
         //the transaction has gone through.
         //TODO: some sort of complete alert!
+        AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+        appDelegate.numberOfSales ++;
+        appDelegate.lastSaleAmount = [_amount doubleValue];
+        appDelegate.totalProfit = appDelegate.totalProfit + appDelegate.lastSaleAmount;
+        [[self presentingViewController] viewWillAppear:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
     NSURLSessionConfiguration *sessionConfig =
