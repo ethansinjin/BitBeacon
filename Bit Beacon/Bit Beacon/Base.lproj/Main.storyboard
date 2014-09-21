@@ -74,13 +74,19 @@
                                         <include reference="Sur-vk-ye0"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="16" y="240" width="568" height="44"/>
+                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Spencer's Coffee" placeholder="$0.00" textAlignment="center" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="uVS-SJ-Wnv">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="36"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="16" y="188" width="568" height="44"/>
+                                </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00000 BTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzU-fY-ruo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initiate to Calculate BTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzU-fY-ruo">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="u1v-I7-czC"/>
@@ -96,6 +102,9 @@
                                     <mask key="constraints">
                                         <include reference="u1v-I7-czC"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="16" y="327" width="568" height="43"/>
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cash" translatesAutoresizingMaskIntoConstraints="NO" id="aEt-z6-SfX">
@@ -116,36 +125,28 @@
                                         <include reference="zVh-Tr-93l"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="236" y="52" width="128" height="128"/>
+                                </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000 ƀ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPQ-fi-l5l">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="36"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EPQ-fi-l5l" firstAttribute="trailing" secondItem="tzU-fY-ruo" secondAttribute="trailing" id="1Nw-0E-ilS"/>
                             <constraint firstAttribute="centerX" secondItem="biD-Qm-vvV" secondAttribute="centerX" id="22N-ui-wMD"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="centerX" secondItem="aEt-z6-SfX" secondAttribute="centerX" id="7wv-S9-94k"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="trailing" secondItem="uVS-SJ-Wnv" secondAttribute="trailing" id="Fix-TH-vRA"/>
                             <constraint firstItem="uVS-SJ-Wnv" firstAttribute="top" secondItem="aEt-z6-SfX" secondAttribute="bottom" constant="8" id="G3x-mO-qHz"/>
-                            <constraint firstItem="KQh-jg-F0t" firstAttribute="top" secondItem="EPQ-fi-l5l" secondAttribute="bottom" constant="359" id="PEc-Hq-9xl"/>
                             <constraint firstItem="tzU-fY-ruo" firstAttribute="top" secondItem="biD-Qm-vvV" secondAttribute="bottom" constant="43" id="PdF-K0-YPa"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="leading" secondItem="IWm-J3-6tn" secondAttribute="leadingMargin" id="QA6-bo-d4K"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="top" secondItem="yxX-UC-Hja" secondAttribute="bottom" constant="334" id="W9M-av-0bP"/>
                             <constraint firstItem="aEt-z6-SfX" firstAttribute="top" secondItem="yxX-UC-Hja" secondAttribute="bottom" constant="28" id="YLX-ib-tO1"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="trailing" secondItem="IWm-J3-6tn" secondAttribute="trailingMargin" id="g1w-Xn-ldY"/>
-                            <constraint firstItem="EPQ-fi-l5l" firstAttribute="top" secondItem="tzU-fY-ruo" secondAttribute="bottom" constant="8" symbolic="YES" id="hBb-6Q-x98">
-                                <variation key="heightClass=regular" constant="8"/>
-                            </constraint>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="leading" secondItem="uVS-SJ-Wnv" secondAttribute="leading" id="ocG-jG-yl6"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="top" secondItem="IWm-J3-6tn" secondAttribute="top" constant="260" id="pCk-tR-BHT"/>
                             <constraint firstItem="tzU-fY-ruo" firstAttribute="trailing" secondItem="biD-Qm-vvV" secondAttribute="trailing" id="rYa-OW-Y8t"/>
                             <constraint firstItem="tzU-fY-ruo" firstAttribute="leading" secondItem="biD-Qm-vvV" secondAttribute="leading" id="sNr-zK-Z2o"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="leading" secondItem="IWm-J3-6tn" secondAttribute="leadingMargin" id="scp-XO-mIV"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="top" secondItem="uVS-SJ-Wnv" secondAttribute="bottom" constant="8" id="stn-54-kHx"/>
-                            <constraint firstItem="tzU-fY-ruo" firstAttribute="leading" secondItem="EPQ-fi-l5l" secondAttribute="leading" id="tkD-1W-di0"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="top" secondItem="uVS-SJ-Wnv" secondAttribute="bottom" constant="8" symbolic="YES" id="vqN-d5-Fpe"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="centerY" secondItem="IWm-J3-6tn" secondAttribute="centerY" id="wXI-JY-eXZ"/>
                             <constraint firstItem="biD-Qm-vvV" firstAttribute="trailing" secondItem="IWm-J3-6tn" secondAttribute="trailingMargin" id="xUP-Dy-Ezq"/>
@@ -156,12 +157,8 @@
                                 <exclude reference="uVS-SJ-Wnv"/>
                                 <exclude reference="tzU-fY-ruo"/>
                                 <exclude reference="aEt-z6-SfX"/>
-                                <exclude reference="EPQ-fi-l5l"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1Nw-0E-ilS"/>
-                                <exclude reference="hBb-6Q-x98"/>
-                                <exclude reference="PEc-Hq-9xl"/>
                                 <exclude reference="22N-ui-wMD"/>
                                 <exclude reference="7wv-S9-94k"/>
                                 <exclude reference="Fix-TH-vRA"/>
@@ -178,7 +175,6 @@
                                 <exclude reference="PdF-K0-YPa"/>
                                 <exclude reference="rYa-OW-Y8t"/>
                                 <exclude reference="sNr-zK-Z2o"/>
-                                <exclude reference="tkD-1W-di0"/>
                                 <exclude reference="G3x-mO-qHz"/>
                                 <exclude reference="YLX-ib-tO1"/>
                             </mask>
@@ -189,12 +185,8 @@
                                 <include reference="uVS-SJ-Wnv"/>
                                 <include reference="tzU-fY-ruo"/>
                                 <include reference="aEt-z6-SfX"/>
-                                <include reference="EPQ-fi-l5l"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1Nw-0E-ilS"/>
-                                <include reference="hBb-6Q-x98"/>
-                                <exclude reference="PEc-Hq-9xl"/>
                                 <exclude reference="22N-ui-wMD"/>
                                 <include reference="7wv-S9-94k"/>
                                 <include reference="Fix-TH-vRA"/>
@@ -211,7 +203,6 @@
                                 <include reference="PdF-K0-YPa"/>
                                 <include reference="rYa-OW-Y8t"/>
                                 <include reference="sNr-zK-Z2o"/>
-                                <include reference="tkD-1W-di0"/>
                                 <include reference="G3x-mO-qHz"/>
                                 <include reference="YLX-ib-tO1"/>
                             </mask>
@@ -225,6 +216,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="BTCTextField" destination="tzU-fY-ruo" id="91l-db-s6z"/>
                         <outlet property="moneyTextField" destination="biD-Qm-vvV" id="rlT-AB-fCn"/>
                         <outlet property="statusImage" destination="aEt-z6-SfX" id="oH3-NM-IjA"/>
                     </connections>

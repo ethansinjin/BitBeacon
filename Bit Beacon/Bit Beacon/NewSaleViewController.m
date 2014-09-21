@@ -7,13 +7,23 @@
 //
 
 #import "NewSaleViewController.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "TransferService.h"
 
 @interface NewSaleViewController () <UITextFieldDelegate, NSURLSessionDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
+@property (strong, nonatomic) IBOutlet UILabel *BTCTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage;
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) int sessionFailureCount;
 @property (nonatomic, strong) NSString *currentTransactionURL;
+@property (nonatomic, strong) NSString *walletAddress;
+@property (nonatomic, strong) NSString *authString;
+
+@property (strong, nonatomic) CBPeripheralManager       *peripheralManager;
+@property (strong, nonatomic) CBMutableCharacteristic   *transferCharacteristic;
+@property (strong, nonatomic) NSData                    *dataToSend;
+@property (nonatomic, readwrite) NSInteger              sendDataIndex;
 
 @end
 
@@ -23,6 +33,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _moneyTextField.delegate = self;
+    
+    //bluetooth
+    _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     
     //set up the currency field
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -36,6 +49,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Don't keep it going while we're not showing.
+    [self.peripheralManager stopAdvertising];
+    
+    [super viewWillDisappear:animated];
 }
 
 /*
@@ -61,10 +82,10 @@
     NSString *userPasswordString = [NSString stringWithFormat:@"%@:%@", apiKey, @""];
     NSData * userPasswordData = [userPasswordString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64EncodedCredential = [userPasswordData base64EncodedStringWithOptions:0];
-    NSString *authString = [NSString stringWithFormat:@"Basic %@", base64EncodedCredential];
+    _authString = [NSString stringWithFormat:@"Basic %@", base64EncodedCredential];
 NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     sessionConfig.HTTPAdditionalHeaders = @{@"Content-Type": @"application/json",
-                                            @"Authorization": authString
+                                            @"Authorization": self.authString
                                             };
 
     
@@ -95,22 +116,52 @@ NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
         NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
         _currentTransactionURL = [json objectForKey:@"url"];
-        
+        [_BTCTextField setText:[NSString stringWithFormat:@"%@ BTC",[json objectForKey:@"btcPrice"]]];
+        [self getBTCAddress];
     }];
     [invpostDataTask resume];
     
+    
+    
+}
+
+-(void) getBTCAddress{
     NSURLSessionConfiguration *sessionConfigTwo =
     [NSURLSessionConfiguration defaultSessionConfiguration];
     sessionConfigTwo.timeoutIntervalForRequest = 30.0;
     sessionConfigTwo.timeoutIntervalForResource = 60.0;
     sessionConfigTwo.HTTPMaximumConnectionsPerHost = 1;
     NSURLSession *sessionTwo = [NSURLSession sessionWithConfiguration:sessionConfigTwo];
-    sessionConfigTwo.HTTPAdditionalHeaders = @{@"Accept": @"text/uri­list",
-                                            @"Authorization": authString
-                                            };
+    sessionConfigTwo.HTTPAdditionalHeaders = @{@"Accept": @"text/uri-­list",
+                                               @"Authorization": self.authString
+                                               };
+    
+    NSURL *invoiceCheckUrl = [NSURL URLWithString:_currentTransactionURL];
+    
+    NSMutableURLRequest *invoiceCheckRequest = [NSMutableURLRequest requestWithURL:invoiceCheckUrl];
+    invoiceCheckRequest.HTTPMethod = @"GET";
+    
+    NSURLSessionDataTask *invcheckDataTask = [sessionTwo dataTaskWithRequest:invoiceCheckRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+        NSInteger statusCode = [HTTPResponse statusCode];
+        NSLog(@"STATUS CODE: %ld",(long)statusCode);
+        /*NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              
+                              options:kNilOptions
+                              error:&error];*/
+        NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
+        //_currentTransactionURL = [json objectForKey:@"url"];
+        //TODO: This is a dummy address because BitPay test server does not respond to the correct Accept stuff
+        _walletAddress=@"msj42CCGruhRsFrGATiUuh25dtxYtnpbTx";
+        if(_walletAddress){
+            [_statusImage setImage:[UIImage imageNamed:@"rfid_signal"]];
+            
+        }
+    }];
+    [invcheckDataTask resume];
 
-    
-    
 }
 
 //https://github.com/peterboni/FormattedCurrencyInput
