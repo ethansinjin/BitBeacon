@@ -217,6 +217,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="BTCTextField" destination="tzU-fY-ruo" id="91l-db-s6z"/>
+                        <outlet property="companyNameTextField" destination="uVS-SJ-Wnv" id="8Gc-f6-65Q"/>
                         <outlet property="moneyTextField" destination="biD-Qm-vvV" id="rlT-AB-fCn"/>
                         <outlet property="statusImage" destination="aEt-z6-SfX" id="oH3-NM-IjA"/>
                     </connections>
