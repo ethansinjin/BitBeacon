@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage;
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) int sessionFailureCount;
+@property (nonatomic, strong) NSString *currentTransactionURL;
 
 @end
 
@@ -50,56 +51,67 @@
 
     NSString *apiKey = @"6LWSFXwV0wkASU72sxLWFoe8gxQCI7sP8S3jcJm78";
     
-    
     NSDecimalNumber *amount = [self getCurrency];
-    NSString *type = @"USD";
     
     NSURLSessionConfiguration *sessionConfig =
     [NSURLSessionConfiguration defaultSessionConfiguration];
-    [sessionConfig setHTTPAdditionalHeaders:
-     @{@"Accept": @"application/json"}];
     sessionConfig.timeoutIntervalForRequest = 30.0;
     sessionConfig.timeoutIntervalForResource = 60.0;
     sessionConfig.HTTPMaximumConnectionsPerHost = 1;
+    NSString *userPasswordString = [NSString stringWithFormat:@"%@:%@", apiKey, @""];
+    NSData * userPasswordData = [userPasswordString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64EncodedCredential = [userPasswordData base64EncodedStringWithOptions:0];
+    NSString *authString = [NSString stringWithFormat:@"Basic %@", base64EncodedCredential];
+NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    sessionConfig.HTTPAdditionalHeaders = @{@"Content-Type": @"application/json",
+                                            @"Authorization": authString
+                                            };
+
     
-    NSString *dataString = [NSString stringWithFormat:@"price=%@&currency=%@", [amount stringValue], type];
+    NSDictionary *jsonDict = @{
+                               @"price": amount,
+                               @"currency":@"USD",
+                               @"transactionSpeed":@"high"
+                               };
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:jsonDict
+                                                       options:0
+                                                         error:nil];
+    NSURL *invoiceUrl = [NSURL URLWithString:@"https://test.bitpay.com/api/invoice"];
     
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    
-    NSURL *url = [NSURL URLWithString:@"https://test.bitpay.com/api/"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    NSString *authStr = [NSString stringWithFormat:@"%@", apiKey];
-    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedDataWithOptions:0]];
-    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
-    //request.HTTPBody = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPMethod = @"POST";
-    
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSMutableURLRequest *invoiceRequest = [NSMutableURLRequest requestWithURL:invoiceUrl];
+    invoiceRequest.HTTPMethod = @"POST";
+    invoiceRequest.HTTPBody = JSONData;
+
+    NSURLSessionDataTask *invpostDataTask = [session dataTaskWithRequest:invoiceRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         // The server answers with an error because it doesn't receive the params
         NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
         NSInteger statusCode = [HTTPResponse statusCode];
         NSLog(@"STATUS CODE: %ld",(long)statusCode);
-    }];
-    [postDataTask resume];
-    
-    NSURL *invUrl = [NSURL URLWithString:@"https://test.bitpay.com/api/invoice"];
-    NSMutableURLRequest *invRequest = [NSMutableURLRequest requestWithURL:invUrl];
-    invRequest.HTTPBody = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    invRequest.HTTPMethod = @"POST";
-    NSURLSessionDataTask *invpostDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        // The server answers with an error because it doesn't receive the params
-        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-        NSInteger statusCode = [HTTPResponse statusCode];
-        NSLog(@"STATUS CODE: %ld",(long)statusCode);
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              
+                              options:kNilOptions 
+                              error:&error];
         NSString *dataAsString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSLog(@"SERVER RETURNED DATA: %@",dataAsString);
+        _currentTransactionURL = [json objectForKey:@"url"];
         
     }];
     [invpostDataTask resume];
-}
     
+    NSURLSessionConfiguration *sessionConfigTwo =
+    [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfigTwo.timeoutIntervalForRequest = 30.0;
+    sessionConfigTwo.timeoutIntervalForResource = 60.0;
+    sessionConfigTwo.HTTPMaximumConnectionsPerHost = 1;
+    NSURLSession *sessionTwo = [NSURLSession sessionWithConfiguration:sessionConfigTwo];
+    sessionConfigTwo.HTTPAdditionalHeaders = @{@"Accept": @"text/uri­list",
+                                            @"Authorization": authString
+                                            };
+
+    
+    
+}
 
 //https://github.com/peterboni/FormattedCurrencyInput
                         

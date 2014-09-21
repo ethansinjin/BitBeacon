@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mpq-FU-F4x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mpq-FU-F4x">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -53,6 +54,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KQh-jg-F0t"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IWm-J3-6tn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0.00" placeholder="$0.00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="48" translatesAutoresizingMaskIntoConstraints="NO" id="biD-Qm-vvV">
@@ -157,8 +159,9 @@
                                 <exclude reference="EPQ-fi-l5l"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="G3x-mO-qHz"/>
-                                <exclude reference="YLX-ib-tO1"/>
+                                <exclude reference="1Nw-0E-ilS"/>
+                                <exclude reference="hBb-6Q-x98"/>
+                                <exclude reference="PEc-Hq-9xl"/>
                                 <exclude reference="22N-ui-wMD"/>
                                 <exclude reference="7wv-S9-94k"/>
                                 <exclude reference="Fix-TH-vRA"/>
@@ -176,9 +179,8 @@
                                 <exclude reference="rYa-OW-Y8t"/>
                                 <exclude reference="sNr-zK-Z2o"/>
                                 <exclude reference="tkD-1W-di0"/>
-                                <exclude reference="1Nw-0E-ilS"/>
-                                <exclude reference="hBb-6Q-x98"/>
-                                <exclude reference="PEc-Hq-9xl"/>
+                                <exclude reference="G3x-mO-qHz"/>
+                                <exclude reference="YLX-ib-tO1"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -190,8 +192,9 @@
                                 <include reference="EPQ-fi-l5l"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="G3x-mO-qHz"/>
-                                <include reference="YLX-ib-tO1"/>
+                                <include reference="1Nw-0E-ilS"/>
+                                <include reference="hBb-6Q-x98"/>
+                                <exclude reference="PEc-Hq-9xl"/>
                                 <exclude reference="22N-ui-wMD"/>
                                 <include reference="7wv-S9-94k"/>
                                 <include reference="Fix-TH-vRA"/>
@@ -209,9 +212,8 @@
                                 <include reference="rYa-OW-Y8t"/>
                                 <include reference="sNr-zK-Z2o"/>
                                 <include reference="tkD-1W-di0"/>
-                                <include reference="1Nw-0E-ilS"/>
-                                <include reference="hBb-6Q-x98"/>
-                                <exclude reference="PEc-Hq-9xl"/>
+                                <include reference="G3x-mO-qHz"/>
+                                <include reference="YLX-ib-tO1"/>
                             </mask>
                         </variation>
                     </view>
