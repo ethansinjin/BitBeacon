@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () 
 
+@property (strong, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *statusIcon;
 
 @end
@@ -19,7 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.moneyTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +48,7 @@
         [_statusIcon setImage:[UIImage imageNamed:@"signal"]];
     }
 }
+
 
 - (IBAction)buttonTapped:(UIButton *)sender {
     [self updateStatus];

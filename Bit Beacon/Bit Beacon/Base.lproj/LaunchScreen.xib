@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_bg" translatesAutoresizingMaskIntoConstraints="NO" id="sxS-Ma-Bpy">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0037" translatesAutoresizingMaskIntoConstraints="NO" id="sxS-Ma-Bpy">
                     <rect key="frame" x="0.0" y="0.0" width="495" height="486"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 BitCat. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
@@ -56,7 +56,7 @@
         </view>
     </objects>
     <resources>
+        <image name="IMG_0037" width="320" height="568"/>
         <image name="lighthouse" width="128" height="128"/>
-        <image name="transaction_bg" width="320" height="568"/>
     </resources>
 </document>

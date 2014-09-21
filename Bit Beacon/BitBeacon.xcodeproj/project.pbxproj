@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C91655419CE8DA700514DCB /* NewSaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C91655319CE8DA700514DCB /* NewSaleViewController.m */; };
 		8C9B144819CE034C00E90496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9B144719CE034C00E90496 /* main.m */; };
 		8C9B144B19CE034C00E90496 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9B144A19CE034C00E90496 /* AppDelegate.m */; };
 		8C9B144E19CE034C00E90496 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9B144D19CE034C00E90496 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C91655219CE8DA700514DCB /* NewSaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSaleViewController.h; sourceTree = "<group>"; };
+		8C91655319CE8DA700514DCB /* NewSaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSaleViewController.m; sourceTree = "<group>"; };
 		8C9B144219CE034C00E90496 /* BitBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9B144619CE034C00E90496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C9B144719CE034C00E90496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 				8C9B144C19CE034C00E90496 /* ViewController.h */,
 				8C9B144D19CE034C00E90496 /* ViewController.m */,
 				8C9B144F19CE034C00E90496 /* Main.storyboard */,
+				8C91655219CE8DA700514DCB /* NewSaleViewController.h */,
+				8C91655319CE8DA700514DCB /* NewSaleViewController.m */,
 				8C9B145219CE034C00E90496 /* Images.xcassets */,
 				8C9B145419CE034C00E90496 /* LaunchScreen.xib */,
 				8C9B144519CE034C00E90496 /* Supporting Files */,
@@ -170,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C91655419CE8DA700514DCB /* NewSaleViewController.m in Sources */,
 				8C9B144E19CE034C00E90496 /* ViewController.m in Sources */,
 				8C9B144B19CE034C00E90496 /* AppDelegate.m in Sources */,
 				8C9B144819CE034C00E90496 /* main.m in Sources */,
@@ -282,6 +288,7 @@
 				INFOPLIST_FILE = "Bit Beacon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BitBeacon;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -293,6 +300,7 @@
 				INFOPLIST_FILE = "Bit Beacon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BitBeacon;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -315,6 +323,7 @@
 				8C9B146719CE034C00E90496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
