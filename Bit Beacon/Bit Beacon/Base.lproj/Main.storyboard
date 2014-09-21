@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--POS-->
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VdF-XN-k6S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0037" translatesAutoresizingMaskIntoConstraints="NO" id="VdF-XN-k6S">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost in USD:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-2j-Juw">
@@ -141,6 +142,36 @@
             </objects>
             <point key="canvasLocation" x="951" y="136"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="sDd-jj-LRH">
+            <objects>
+                <viewController id="opd-vT-ssa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oAy-Zp-UBy"/>
+                        <viewControllerLayoutGuide type="bottom" id="RNT-lR-rRW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="92t-tN-bZu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0037" translatesAutoresizingMaskIntoConstraints="NO" id="anY-JF-O55">
+                                <rect key="frame" x="-6" y="-15" width="622" height="630"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="anY-JF-O55" secondAttribute="trailing" constant="-16" id="66x-6J-Htd"/>
+                            <constraint firstItem="anY-JF-O55" firstAttribute="leading" secondItem="92t-tN-bZu" secondAttribute="leading" constant="-6" id="6PG-cQ-Oev"/>
+                            <constraint firstItem="anY-JF-O55" firstAttribute="top" secondItem="92t-tN-bZu" secondAttribute="topMargin" constant="-15" id="VYZ-aO-WdN"/>
+                            <constraint firstItem="anY-JF-O55" firstAttribute="centerY" secondItem="92t-tN-bZu" secondAttribute="centerY" id="mhe-My-dkX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="sSV-Vf-gl2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1y-4h-Ztt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="882"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9Tt-CQ-DCR">
             <objects>
@@ -149,10 +180,13 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hey-Tu-eeP">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.091375077361596668" green="0.20439227657093204" blue="0.46635841836734693" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.14965322066326525" green="0.12303709779892691" blue="0.09411233422930862" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="AaT-mR-a7A"/>
+                        <segue destination="opd-vT-ssa" kind="relationship" relationship="viewControllers" id="CNO-ad-f9o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajJ-ra-LXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,8 +195,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="IMG_0037" width="320" height="568"/>
         <image name="bank" width="29" height="26"/>
         <image name="lighthouse" width="128" height="128"/>
-        <image name="transaction_bg" width="320" height="568"/>
     </resources>
 </document>
