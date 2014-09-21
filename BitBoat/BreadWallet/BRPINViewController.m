@@ -222,8 +222,12 @@
         if (m.pin.length == PIN_LENGTH) {
             self.titleLabel.text = (self.changePin) ? NSLocalizedString(@"enter current pin", nil) :
                                    NSLocalizedString(@"Touch ID or Enter Pin", nil);
+            self.touchIDButton.hidden = (self.changePin) ? YES : NO;
         }
-        else self.titleLabel.text = NSLocalizedString(@"choose a pin", nil);
+        else {
+            self.titleLabel.text = NSLocalizedString(@"choose a pin", nil);
+            self.touchIDButton.hidden = YES;
+        }
     }
 
     [self.cancelButton setTitle:(self.cancelable && ! self.fail) ? NSLocalizedString(@"cancel", key) : @""

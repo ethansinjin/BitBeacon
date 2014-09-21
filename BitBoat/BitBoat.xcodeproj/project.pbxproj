@@ -1490,7 +1490,6 @@
 		75AA5F53194143D5003F23BD /* BRBouncyBurgerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBouncyBurgerButton.h; sourceTree = "<group>"; };
 		75AA5F54194143D5003F23BD /* BRBouncyBurgerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBouncyBurgerButton.m; sourceTree = "<group>"; };
 		75B8346619233B550010931E /* dsa_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dsa_gen.c; sourceTree = "<group>"; };
-		75BCC59A1946520700EC1A64 /* BreadWalletTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BreadWalletTests.h; sourceTree = "<group>"; };
 		75C1426219A6844200402CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		75D5F3BE191EC270004AB296 /* BitBoat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBoat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D5F3C1191EC270004AB296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1505,9 +1504,6 @@
 		75D5F3DD191EC270004AB296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75D5F3DF191EC270004AB296 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		75D5F3E6191EC270004AB296 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		75D5F3EE191EC270004AB296 /* BitBoatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitBoatTests-Info.plist"; sourceTree = "<group>"; };
-		75D5F3F0191EC270004AB296 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		75D5F3F2191EC270004AB296 /* BreadWalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreadWalletTests.m; sourceTree = "<group>"; };
 		84C92C02197C3DF600BD1664 /* buildinf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildinf.h; sourceTree = "<group>"; };
 		84C92C0E197C3DF600BD1664 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslconf.h; sourceTree = "<group>"; };
 		84C92C1D197C3E0300BD1664 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -1587,6 +1583,7 @@
 		84C92C67197C3E0300BD1664 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
 		84F68C881975E9E2002FC300 /* BRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRScanViewController.h; sourceTree = "<group>"; };
 		84F68C891975E9E2002FC300 /* BRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRScanViewController.m; sourceTree = "<group>"; };
+		AFC7E94B19CE11EA00125527 /* TransferService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferService.h; sourceTree = "<group>"; };
 		AFECE82B19CDD7AC003DBA53 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		AFECE82D19CDE009003DBA53 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -2880,6 +2877,7 @@
 				757BE7E8192D4E880061CB20 /* BRSeedViewController.m */,
 				75242C831968876500CF40E7 /* BRPINViewController.h */,
 				75242C841968876500CF40E7 /* BRPINViewController.m */,
+				AFC7E94B19CE11EA00125527 /* TransferService.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2887,8 +2885,7 @@
 		75D5F3B5191EC270004AB296 = {
 			isa = PBXGroup;
 			children = (
-				75D5F3C7191EC270004AB296 /* BreadWallet */,
-				75D5F3EC191EC270004AB296 /* BreadWalletTests */,
+				75D5F3C7191EC270004AB296 /* BitBoat */,
 				75D5F3C0191EC270004AB296 /* Frameworks */,
 				75D5F3BF191EC270004AB296 /* Products */,
 			);
@@ -2917,7 +2914,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		75D5F3C7191EC270004AB296 /* BreadWallet */ = {
+		75D5F3C7191EC270004AB296 /* BitBoat */ = {
 			isa = PBXGroup;
 			children = (
 				752E289C19234A4700DB5A3C /* Models */,
@@ -2934,6 +2931,7 @@
 				7579F7FE19231D4600CA56F4 /* ThirdParty */,
 				75D5F3C8191EC270004AB296 /* Supporting Files */,
 			);
+			name = BitBoat;
 			path = BreadWallet;
 			sourceTree = "<group>";
 		};
@@ -2945,25 +2943,6 @@
 				75A1E4D6193869C500D85BEE /* Localizable.strings */,
 				75D5F3CD191EC270004AB296 /* main.m */,
 				75D5F3CF191EC270004AB296 /* BitBoat-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		75D5F3EC191EC270004AB296 /* BreadWalletTests */ = {
-			isa = PBXGroup;
-			children = (
-				75BCC59A1946520700EC1A64 /* BreadWalletTests.h */,
-				75D5F3F2191EC270004AB296 /* BreadWalletTests.m */,
-				75D5F3ED191EC270004AB296 /* Supporting Files */,
-			);
-			path = BreadWalletTests;
-			sourceTree = "<group>";
-		};
-		75D5F3ED191EC270004AB296 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				75D5F3EE191EC270004AB296 /* BitBoatTests-Info.plist */,
-				75D5F3EF191EC270004AB296 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3877,14 +3856,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		75D5F3EF191EC270004AB296 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75D5F3F0191EC270004AB296 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -3922,7 +3893,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -4059,7 +4030,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -4092,7 +4063,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE = "84950575-36B1-4EC2-B78D-8C2309474D7F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -35,7 +35,7 @@
 #define ADDRESS_TIP NSLocalizedString(@"This is your bitcoin address. Tap to copy it or send it by email or sms. The "\
                     "address will change each time you receive funds, but old addresses always work.", nil)
 
-@interface BRReceiveViewController ()
+@interface BRReceiveViewController () 
 
 @property (nonatomic, strong) BRBubbleView *tipView;
 @property (nonatomic, assign) BOOL showTips, updated;
@@ -43,6 +43,8 @@
 @property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) IBOutlet UIButton *addressButton;
 @property (nonatomic, strong) IBOutlet UIImageView *qrView;
+
+
 
 @end
 
@@ -66,13 +68,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    
     if (! self.updated) [self performSelector:@selector(updateAddress) withObject:nil afterDelay:0.1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self hideTips];
+    
+        
     
     [super viewWillDisappear:animated];
 }

@@ -27,6 +27,7 @@
 
 @interface BRPINViewController : UIViewController <UINavigationControllerDelegate,
 UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@property (strong, nonatomic) IBOutlet UIButton *touchIDButton;
 
 @property (nonatomic, assign) BOOL appeared; // set this to true if this is not initial pin lock following app launch
 @property (nonatomic, assign) BOOL cancelable;

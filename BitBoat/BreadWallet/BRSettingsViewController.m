@@ -58,7 +58,7 @@
 
     self.txDates = [NSMutableDictionary dictionary];
     self.wallpaper = [[UIImageView alloc] initWithFrame:self.navigationController.view.bounds];
-    self.wallpaper.image = [UIImage imageNamed:@"wallpaper-default"];
+    self.wallpaper.image = [UIImage imageNamed:@"wallpaper-settings"];
     self.wallpaper.contentMode = UIViewContentModeLeft;
     [self.navigationController.view insertSubview:self.wallpaper atIndex:0];
     self.navigationController.delegate = self;

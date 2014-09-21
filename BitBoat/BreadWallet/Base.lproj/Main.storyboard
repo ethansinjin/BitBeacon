@@ -1080,10 +1080,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce6-Wi-wk4">
-                                <rect key="frame" x="45" y="308" width="230" height="44"/>
+                                <rect key="frame" x="45" y="390" width="230" height="44"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="VYD-wt-tIH"/>
+                                    <constraint firstAttribute="height" constant="44" id="poO-7J-CWH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -1105,10 +1105,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfj-xS-5rN">
-                                <rect key="frame" x="45" y="392" width="230" height="44"/>
+                                <rect key="frame" x="45" y="474" width="230" height="44"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xzF-FO-1Yd"/>
+                                    <constraint firstAttribute="height" constant="44" id="QdS-cO-0GZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
@@ -1126,7 +1126,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SgP-DR-cyl">
-                                <rect key="frame" x="16" y="436" width="288" height="112"/>
+                                <rect key="frame" x="16" y="518" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZSV-vc-yiH"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
@@ -1135,41 +1138,66 @@
                                     <outlet property="delegate" destination="RsQ-W7-grB" id="r8I-vJ-Pvw"/>
                                 </connections>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rfid_signal" translatesAutoresizingMaskIntoConstraints="NO" id="IGS-aZ-GSy">
-                                <rect key="frame" x="96" y="109" width="128" height="128"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="searching for BitBeacons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebt-H1-ZSt">
-                                <rect key="frame" x="35" y="72" width="250" height="29"/>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="searching for BitBeacons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebt-H1-ZSt">
+                                <rect key="frame" x="16" y="72" width="288" height="29"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1q-Ow-wVx">
+                                <rect key="frame" x="35" y="245" width="269" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000 ƀ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbU-Ps-aty">
+                                <rect key="frame" x="35" y="273" width="269" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yEc-J6-N36">
+                                <rect key="frame" x="35" y="302" width="269" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-Fc-nxt">
+                                <rect key="frame" x="96" y="109" width="128" height="128"/>
+                                <state key="normal" title="Button" image="rfid_signal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="payToBTAddress:" destination="RsQ-W7-grB" eventType="touchUpInside" id="h7q-Ok-b9y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="IGS-aZ-GSy" firstAttribute="top" secondItem="ebt-H1-ZSt" secondAttribute="bottom" constant="8" symbolic="YES" id="3gT-zX-hsC"/>
-                            <constraint firstItem="bfj-xS-5rN" firstAttribute="top" secondItem="ce6-Wi-wk4" secondAttribute="bottom" constant="40" id="4jY-Wy-wV0"/>
-                            <constraint firstItem="SgP-DR-cyl" firstAttribute="centerX" secondItem="bfj-xS-5rN" secondAttribute="centerX" id="BVc-UO-dcB"/>
-                            <constraint firstItem="IGS-aZ-GSy" firstAttribute="top" secondItem="Nmx-0C-BXz" secondAttribute="top" constant="109" id="HEn-dc-ove"/>
-                            <constraint firstItem="SgP-DR-cyl" firstAttribute="leading" secondItem="Nmx-0C-BXz" secondAttribute="leadingMargin" id="J68-MP-yac"/>
-                            <constraint firstItem="IGS-aZ-GSy" firstAttribute="centerX" secondItem="ebt-H1-ZSt" secondAttribute="centerX" id="JTf-3G-5YQ"/>
-                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="leading" secondItem="Nmx-0C-BXz" secondAttribute="leadingMargin" constant="29" id="Wfg-O8-m0H"/>
-                            <constraint firstItem="IGS-aZ-GSy" firstAttribute="centerX" secondItem="ce6-Wi-wk4" secondAttribute="centerX" id="XqF-f6-Y1P"/>
-                            <constraint firstItem="SgP-DR-cyl" firstAttribute="top" secondItem="bfj-xS-5rN" secondAttribute="bottom" id="Y0C-9Y-NM4"/>
-                            <constraint firstItem="bfj-xS-5rN" firstAttribute="centerX" secondItem="Nmx-0C-BXz" secondAttribute="centerX" id="Ydm-2Q-OqK"/>
-                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="leading" secondItem="bfj-xS-5rN" secondAttribute="leading" id="cp5-Qs-aFR"/>
-                            <constraint firstAttribute="bottom" secondItem="SgP-DR-cyl" secondAttribute="bottom" constant="20" symbolic="YES" id="e5G-gE-bOX"/>
-                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="top" secondItem="IGS-aZ-GSy" secondAttribute="bottom" constant="71" id="jZY-sz-rKy"/>
-                            <constraint firstItem="bfj-xS-5rN" firstAttribute="trailing" secondItem="ce6-Wi-wk4" secondAttribute="trailing" id="yUG-Zw-fTy"/>
+                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="trailing" secondItem="bfj-xS-5rN" secondAttribute="trailing" id="4PM-lD-blR"/>
+                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="leading" secondItem="bfj-xS-5rN" secondAttribute="leading" id="6fp-YD-XYr"/>
+                            <constraint firstItem="bfj-xS-5rN" firstAttribute="top" secondItem="ce6-Wi-wk4" secondAttribute="bottom" constant="40" id="73D-4X-jgu"/>
+                            <constraint firstItem="SgP-DR-cyl" firstAttribute="trailing" secondItem="Nmx-0C-BXz" secondAttribute="trailingMargin" id="8qD-QY-0Ce"/>
+                            <constraint firstAttribute="bottom" secondItem="SgP-DR-cyl" secondAttribute="bottom" constant="20" symbolic="YES" id="Ex3-CY-TVH"/>
+                            <constraint firstItem="SgP-DR-cyl" firstAttribute="centerX" secondItem="bfj-xS-5rN" secondAttribute="centerX" id="NA0-2G-7W1"/>
+                            <constraint firstItem="ce6-Wi-wk4" firstAttribute="leading" secondItem="Nmx-0C-BXz" secondAttribute="leadingMargin" constant="29" id="adS-7x-ksn"/>
+                            <constraint firstItem="SgP-DR-cyl" firstAttribute="top" secondItem="bfj-xS-5rN" secondAttribute="bottom" id="h8I-K9-wTp"/>
+                            <constraint firstItem="SgP-DR-cyl" firstAttribute="leading" secondItem="Nmx-0C-BXz" secondAttribute="leadingMargin" id="mjT-ed-2pr"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="8hO-zb-g85" appends="YES" id="rl9-b8-NMw"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="BTStatusImage" destination="9gB-Fc-nxt" id="d0d-YF-0Km"/>
+                        <outlet property="BTStatusLabel" destination="ebt-H1-ZSt" id="Oic-Cf-rnq"/>
+                        <outlet property="addressLabel" destination="Z1q-Ow-wVx" id="bq2-aI-59H"/>
+                        <outlet property="bitsLabel" destination="cbU-Ps-aty" id="1Lf-Vn-mfP"/>
                         <outlet property="clipboardButton" destination="bfj-xS-5rN" id="mfH-NX-2iX"/>
                         <outlet property="clipboardText" destination="SgP-DR-cyl" id="pL2-sH-61L"/>
+                        <outlet property="dollarsLabel" destination="yEc-J6-N36" id="wwT-Wy-N3T"/>
                         <outlet property="scanButton" destination="ce6-Wi-wk4" id="tr9-fj-NRa"/>
                     </connections>
                 </viewController>
@@ -1346,7 +1374,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-D7-2JP">
@@ -1610,10 +1638,9 @@
                                         <gestureRecognizers/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <string key="content">breadwallet v%ver%%net%
-copyright © 2014 Aaron Voisine
-
-this app is open source
+                                                <string key="content">BitBoat Beta
+copyright © 2014 Ethan Gill and Jonah Starling
+powered by breadwallet v%ver%%net% by Aaron Voisine
 </string>
                                                 <attributes>
                                                     <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
@@ -1652,13 +1679,15 @@ this app is open source
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="G4X-xw-xAl" secondAttribute="trailing" id="4eh-tn-kSf"/>
                                     <constraint firstItem="Wyo-tk-JbR" firstAttribute="top" secondItem="ePg-dk-slQ" secondAttribute="top" id="8Rt-J8-gsZ"/>
+                                    <constraint firstItem="uvz-hk-Nr4" firstAttribute="centerX" secondItem="Wyo-tk-JbR" secondAttribute="centerX" id="ASP-1p-1YJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Wyo-tk-JbR" secondAttribute="trailing" id="Meb-9n-MCt"/>
                                     <constraint firstAttribute="height" constant="200" id="PRH-47-fkS"/>
                                     <constraint firstItem="Wyo-tk-JbR" firstAttribute="leading" secondItem="ePg-dk-slQ" secondAttribute="leading" id="XyP-sw-WKb"/>
-                                    <constraint firstAttribute="centerY" secondItem="uvz-hk-Nr4" secondAttribute="centerY" id="if5-2n-2ws"/>
+                                    <constraint firstItem="uvz-hk-Nr4" firstAttribute="top" secondItem="Wyo-tk-JbR" secondAttribute="bottom" constant="21" id="hpx-WK-6bd"/>
                                     <constraint firstAttribute="bottom" secondItem="G4X-xw-xAl" secondAttribute="bottom" id="jM5-Ee-UoQ"/>
                                     <constraint firstItem="G4X-xw-xAl" firstAttribute="leading" secondItem="ePg-dk-slQ" secondAttribute="leading" id="lQV-GX-C2M"/>
-                                    <constraint firstAttribute="centerX" secondItem="uvz-hk-Nr4" secondAttribute="centerX" id="wWx-ZR-hlV"/>
+                                    <constraint firstItem="uvz-hk-Nr4" firstAttribute="centerY" secondItem="ePg-dk-slQ" secondAttribute="centerY" id="oCO-II-BVr"/>
+                                    <constraint firstItem="uvz-hk-Nr4" firstAttribute="leading" secondItem="ePg-dk-slQ" secondAttribute="leading" constant="44" id="v0C-cq-GhT"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="68Y-ha-WTV" appends="YES" id="ofC-qZ-bdB"/>
@@ -1791,7 +1820,7 @@ Use it to restore your wallet on another device if this one is ever lost or brok
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efL-Cj-Aho">
@@ -1934,10 +1963,10 @@ Use it to restore your wallet on another device if this one is ever lost or brok
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="wallpaper-welcome" translatesAutoresizingMaskIntoConstraints="NO" id="xGr-ag-4pI">
+                            <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper-welcome" translatesAutoresizingMaskIntoConstraints="NO" id="xGr-ag-4pI">
                                 <rect key="frame" x="0.0" y="0.0" width="757" height="568"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="757" id="zAB-zW-RdA"/>
+                                    <constraint firstAttribute="width" constant="757" id="A4m-GT-n6B"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="breadwallet-big" translatesAutoresizingMaskIntoConstraints="NO" id="FJv-fU-9AC">
@@ -2791,6 +2820,7 @@ Cgo
                         <constraints>
                             <constraint firstItem="3X5-SY-Dxe" firstAttribute="centerY" secondItem="zKl-0k-txb" secondAttribute="centerY" id="0Hv-RD-ZWV"/>
                             <constraint firstItem="Ktz-66-HDX" firstAttribute="leading" secondItem="KDQ-9z-tgd" secondAttribute="trailing" constant="22" id="17m-cJ-9xz"/>
+                            <constraint firstItem="xGr-ag-4pI" firstAttribute="leading" secondItem="ZzD-Qc-uQy" secondAttribute="leading" id="6XT-Mu-bGH"/>
                             <constraint firstItem="JVc-Me-836" firstAttribute="centerY" secondItem="LN4-YY-3RQ" secondAttribute="centerY" id="76a-8u-wxa"/>
                             <constraint firstItem="tBV-ew-ggP" firstAttribute="height" secondItem="iGw-ju-oXF" secondAttribute="height" id="7NM-bn-hcq"/>
                             <constraint firstItem="Fdh-Ze-PZW" firstAttribute="centerX" secondItem="pxc-C6-1Sd" secondAttribute="centerX" id="9RY-ni-Ott"/>
@@ -2822,6 +2852,7 @@ Cgo
                             <constraint firstItem="lzQ-at-alt" firstAttribute="leading" secondItem="IkG-JC-8ma" secondAttribute="trailing" constant="14" id="bBs-H4-Km8"/>
                             <constraint firstAttribute="centerX" secondItem="4Lz-RL-RUK" secondAttribute="centerX" id="bKc-j4-G8M"/>
                             <constraint firstItem="IkG-JC-8ma" firstAttribute="top" secondItem="zKl-0k-txb" secondAttribute="bottom" id="bSY-87-EAz"/>
+                            <constraint firstItem="xGr-ag-4pI" firstAttribute="bottom" secondItem="ZzD-Qc-uQy" secondAttribute="top" id="bWS-4e-xue"/>
                             <constraint firstItem="tBV-ew-ggP" firstAttribute="height" secondItem="fw3-OY-MiL" secondAttribute="height" id="dzY-am-ZaH"/>
                             <constraint firstAttribute="centerY" secondItem="FJv-fU-9AC" secondAttribute="centerY" id="eQI-z2-GUo"/>
                             <constraint firstItem="fLd-LT-KCF" firstAttribute="top" secondItem="lzQ-at-alt" secondAttribute="top" id="ew1-3I-2jK"/>
@@ -2833,7 +2864,6 @@ Cgo
                             <constraint firstItem="IkG-JC-8ma" firstAttribute="centerX" secondItem="zKl-0k-txb" secondAttribute="centerX" id="nSx-xh-Y3x"/>
                             <constraint firstAttribute="centerX" secondItem="tBV-ew-ggP" secondAttribute="centerX" id="pi3-K2-cKV"/>
                             <constraint firstItem="Fdh-Ze-PZW" firstAttribute="top" secondItem="zhS-gG-oV0" secondAttribute="bottom" constant="38" id="q7b-Zs-QCh"/>
-                            <constraint firstItem="xGr-ag-4pI" firstAttribute="leading" secondItem="ZzD-Qc-uQy" secondAttribute="leading" id="wJV-Us-795"/>
                             <constraint firstItem="4Lz-RL-RUK" firstAttribute="height" secondItem="iGw-ju-oXF" secondAttribute="height" id="wmO-tp-MA2"/>
                             <constraint firstItem="Fdh-Ze-PZW" firstAttribute="top" secondItem="iGw-ju-oXF" secondAttribute="bottom" id="xkt-sQ-lkK"/>
                         </constraints>
@@ -2849,6 +2879,7 @@ Cgo
                         <outlet property="logoXCenter" destination="AWO-xE-pCF" id="ubh-dq-3Bf"/>
                         <outlet property="padXCenter" destination="Ggx-4Y-aau" id="b5p-FH-GgU"/>
                         <outlet property="titleLabel" destination="zhS-gG-oV0" id="jCx-AK-LhQ"/>
+                        <outlet property="touchIDButton" destination="fLd-LT-KCF" id="ftV-fS-Fbc"/>
                         <outlet property="wallpaper" destination="xGr-ag-4pI" id="qAe-Rb-6bC"/>
                         <outletCollection property="padButtons" destination="KDQ-9z-tgd" id="70j-Lk-ihc"/>
                         <outletCollection property="padButtons" destination="Ktz-66-HDX" id="kT7-YH-fNA"/>
@@ -2939,7 +2970,7 @@ it and you may lose your bitcoins forever.</string>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-1d-tW9">

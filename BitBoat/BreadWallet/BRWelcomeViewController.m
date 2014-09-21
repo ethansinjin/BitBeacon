@@ -26,8 +26,8 @@
 #import "BRWelcomeViewController.h"
 #import "BRWalletManager.h"
 
-#define WALLPAPER_ANIMATION_DURATION 30.0
-#define WALLPAPER_ANIMATION_X 240.0
+#define WALLPAPER_ANIMATION_DURATION 0
+#define WALLPAPER_ANIMATION_X 0.0
 #define WALLPAPER_ANIMATION_Y 0.0
 
 @interface BRWelcomeViewController ()

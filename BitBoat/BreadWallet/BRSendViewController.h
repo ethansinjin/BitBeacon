@@ -35,5 +35,10 @@ UIViewControllerAnimatedTransitioning>
 
 - (void)handleURL:(NSURL *)url;
 - (void)handleFile:(NSData *)file;
+@property (strong, nonatomic) IBOutlet UIButton *BTStatusImage;
+@property (strong, nonatomic) IBOutlet UILabel *BTStatusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bitsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dollarsLabel;
 
 @end

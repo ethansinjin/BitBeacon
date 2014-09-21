@@ -23,6 +23,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+@import LocalAuthentication;
+
 #import "BRSendViewController.h"
 #import "BRRootViewController.h"
 #import "BRScanViewController.h"
@@ -40,6 +42,9 @@
 #import "NSMutableData+Bitcoin.h"
 #import "NSData+Hash.h"
 
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "TransferService.h"
+
 #define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their bitcoin address. "\
                                          "You can send a payment to anyone with an address.", nil)
 #define CLIPBOARD_TIP NSLocalizedString(@"Bitcoin addresses can also be copied to the clipboard. "\
@@ -56,7 +61,7 @@ static NSString *sanitizeString(NSString *s)
     return sane;
 }
 
-@interface BRSendViewController ()
+@interface BRSendViewController () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic, assign) BOOL clearClipboard, useClipboard, showTips, didAskFee, removeFee;
 @property (nonatomic, strong) BRTransaction *tx, *sweepTx;
@@ -71,6 +76,10 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet UILabel *sendLabel;
 @property (nonatomic, strong) IBOutlet UIButton *scanButton, *clipboardButton;
 @property (nonatomic, strong) IBOutlet UITextView *clipboardText;
+
+@property (strong, nonatomic) CBCentralManager      *centralManager;
+@property (strong, nonatomic) CBPeripheral          *discoveredPeripheral;
+@property (strong, nonatomic) NSMutableData         *data;
 
 @end
 
@@ -91,6 +100,13 @@ static NSString *sanitizeString(NSString *s)
             }
             else [self updateClipboardText];
         }];
+
+    // Start up the CBCentralManager
+    _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    
+    // And somewhere to store the incoming data
+    _data = [[NSMutableData alloc] init];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -105,12 +121,24 @@ static NSString *sanitizeString(NSString *s)
     if (! self.scanController) {
         self.scanController = [self.storyboard instantiateViewControllerWithIdentifier:@"ScanViewController"];
     }
+    //start scanning for bluetooth le beacons
+    [self scan];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self hideTips];
-
+    
+    // Don't keep it going while we're not showing.
+    [self.centralManager stopScan];
+    NSLog(@"Scanning stopped");
+    [_bitsLabel setHidden:YES];
+    [_addressLabel setHidden:YES];
+    [_dollarsLabel setHidden:YES];
+    [_BTStatusImage setImage:[UIImage imageNamed:@"rfid_signal.png"] forState:UIControlStateNormal];
+    [_BTStatusLabel setText:[NSString stringWithFormat:@"Searching for BitBeacons"]];
+    [_BTStatusImage setEnabled:NO];
+    [self cleanup];
     [super viewWillDisappear:animated];
 }
 
@@ -210,10 +238,196 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
     }
 
     self.okAddress = nil;
-
+    [_BTStatusLabel setText:@"Processing Transaction"];
     //TODO: XXX full screen dialog with clean transitions
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"confirm payment", nil) message:msg delegate:self
-      cancelButtonTitle:NSLocalizedString(@"cancel", nil) otherButtonTitles:amountStr, nil] show];
+    //TODO: ETHAN TOUCH ID
+    
+    //touch ID shit
+    //TODO: prevent touchID from showing when changing PIN
+        LAContext *myContext = [[LAContext alloc] init];
+        NSError *authError = nil;
+        NSString *myLocalizedReasonString = msg;
+        if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+            
+            [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                      localizedReason:myLocalizedReasonString
+                                reply:^(BOOL succes, NSError *error) {
+                                    
+                                    if (succes) {
+                                        NSLog(@"User is authenticated successfully");
+                                        
+                                        
+                                        if (self.sweepTx) {
+                                            [(id)self.parentViewController.parentViewController startActivityWithTimeout:30];
+                                            
+                                            [[BRPeerManager sharedInstance] publishTransaction:self.sweepTx completion:^(NSError *error) {
+                                                [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
+                                                
+                                                if (error) {
+                                                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't sweep balance", nil)
+                                                                                message:error.localizedDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil)
+                                                                      otherButtonTitles:nil] show];
+                                                    [self cancel:nil];
+                                                    return;
+                                                }
+                                                
+                                                [self.view addSubview:[[[BRBubbleView viewWithText:NSLocalizedString(@"swept!", nil)
+                                                                                            center:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)]
+                                                                        popIn] popOutAfterDelay:2.0]];
+                                                [self reset:nil];
+                                            }];
+                                            
+                                            return;
+                                        }
+                                        else if (! self.tx && self.okAddress) {
+                                            //if ([[alertView buttonTitleAtIndex:buttonIndex] isEqual:NSLocalizedString(@"ignore", nil)]) {
+                                            if (self.protocolRequest) [self confirmProtocolRequest:self.protocolRequest];
+                                            else if (self.request) [self confirmRequest:self.request];
+                                            //}
+                                            else [self cancel:nil];
+                                            
+                                            return;
+                                        }
+                                        
+                                        BRPaymentProtocolRequest *protoReq = self.protocolRequest;
+                                        //    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+                                        //
+                                        //    if ([title isEqual:NSLocalizedString(@"remove fee", nil)] || [title isEqual:NSLocalizedString(@"continue", nil)]) {
+                                        //        self.didAskFee = YES;
+                                        //        self.removeFee = ([title isEqual:NSLocalizedString(@"remove fee", nil)]) ? YES : NO;
+                                        //        if (self.protocolRequest) [self confirmProtocolRequest:self.protocolRequest];
+                                        //        else if (self.request) [self confirmRequest:self.request];
+                                        //        return;
+                                        //    }
+                                        
+                                        if (! self.tx) {
+                                            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"insufficient funds", nil) message:nil delegate:nil
+                                                              cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
+                                            [self cancel:nil];
+                                            return;
+                                        }
+                                        
+                                        //TODO: check for duplicate transactions
+                                        
+                                        if (self.navigationController.topViewController != self.parentViewController.parentViewController) {
+                                            [self.navigationController popToRootViewControllerAnimated:YES];
+                                        }
+                                        
+                                        NSLog(@"signing transaction");
+                                        
+                                        [(id)self.parentViewController.parentViewController startActivityWithTimeout:30.0];
+                                        
+                                        //TODO: don't sign on main thread
+                                        if (! [m.wallet signTransaction:self.tx]) {
+                                            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
+                                                                        message:NSLocalizedString(@"error signing bitcoin transaction", nil) delegate:nil
+                                                              cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
+                                            [self cancel:nil];
+                                            return;
+                                        }
+                                        
+                                        NSLog(@"signed transaction:\n%@", [NSString hexWithData:self.tx.data]);
+                                        
+                                        [[BRPeerManager sharedInstance] publishTransaction:self.tx completion:^(NSError *error) {
+                                            if (protoReq.details.paymentURL.length > 0) return;
+                                            [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
+                                            
+                                            if (error) {
+                                                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
+                                                                            message:error.localizedDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil)
+                                                                  otherButtonTitles:nil] show];
+                                                [self cancel:nil];
+                                            }
+                                            else {
+                                                //TODO: XXXX show full screen sent dialog with tx info, "you sent b10,000 to bob"
+                                                //TODO: ETHANETHAN
+                                                [self.centralManager stopScan];
+                                                [_BTStatusImage setEnabled:NO];
+                                                [_BTStatusLabel setText:@"Transaction Complete!"];
+                                                [_BTStatusImage setImage:[UIImage imageNamed:@"checkmark.png"] forState:UIControlStateNormal];
+                                                [self reset:nil];
+                                            }
+                                        }];
+                                        
+                                        if (protoReq.details.paymentURL.length > 0) {
+                                            uint64_t refundAmount = 0;
+                                            NSMutableData *refundScript = [NSMutableData data];
+                                            
+                                            // use the payment transaction's change address as the refund address, which prevents the same address being
+                                            // used in other transactions in the event no refund is ever issued
+                                            [refundScript appendScriptPubKeyForAddress:m.wallet.changeAddress];
+                                            
+                                            for (NSNumber *amount in protoReq.details.outputAmounts) {
+                                                refundAmount += [amount unsignedLongLongValue];
+                                            }
+                                            
+                                            // TODO: keep track of commonName/memo to associate them with outputScripts
+                                            BRPaymentProtocolPayment *payment =
+                                            [[BRPaymentProtocolPayment alloc] initWithMerchantData:protoReq.details.merchantData
+                                                                                      transactions:@[self.tx] refundToAmounts:@[@(refundAmount)] refundToScripts:@[refundScript] memo:nil];
+                                            
+                                            NSLog(@"posting payment to: %@", protoReq.details.paymentURL);
+                                            
+                                            [BRPaymentRequest postPayment:payment to:protoReq.details.paymentURL timeout:20.0
+                                                               completion:^(BRPaymentProtocolACK *ack, NSError *error) {
+                                                                   [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
+                                                                   
+                                                                   if (error && ! [m.wallet transactionIsRegistered:self.tx.txHash]) {
+                                                                       [[[UIAlertView alloc] initWithTitle:nil message:error.localizedDescription delegate:nil
+                                                                                         cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
+                                                                       [self cancel:nil];
+                                                                   }
+                                                                   else {
+                                                                       [self.view
+                                                                        addSubview:[[[BRBubbleView
+                                                                                      viewWithText:(ack.memo.length > 0 ? ack.memo : NSLocalizedString(@"sent!", nil))
+                                                                                      center:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)] popIn]
+                                                                                    popOutAfterDelay:(ack.memo.length > 10 ? 3.0 : 2.0)]];
+                                                                       [self reset:nil];
+                                                                       
+                                                                       if (error) NSLog(@"%@", error.localizedDescription); // transaction was sent despite pay protocol error
+                                                                   }
+                                                               }];
+                                        }
+
+ 
+                                        
+                                    } else {
+                                        
+                                        switch (error.code) {
+                                            case LAErrorAuthenticationFailed:
+                                                NSLog(@"Authentication Failed");
+                                                [self cancel:nil];
+                                                [_BTStatusLabel setText:@"Transaction Canceled"];
+                                                break;
+                                                
+                                            case LAErrorUserCancel:
+                                                NSLog(@"User pressed Cancel button");
+                                                [self cancel:nil];
+                                                [_BTStatusLabel setText:@"Transaction Canceled"];
+                                                break;
+                                                
+                                            case LAErrorUserFallback:
+                                                NSLog(@"User pressed \"Enter Password\"");
+                                                
+                                                
+                                            default:
+                                                NSLog(@"Touch ID is not configured");
+                                                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"confirm payment", nil) message:msg delegate:self
+                                                                  cancelButtonTitle:NSLocalizedString(@"cancel", nil) otherButtonTitles:amountStr, nil] show];
+                                                break;
+                                        }
+                                        
+                                        NSLog(@"Authentication Fails");
+                                    }
+                                }];
+        } else {
+            NSLog(@"Can not evaluate Touch ID");
+            //The device the user is on does not have a Touch ID sensor. Ignore and fallback
+            
+        }
+    
+    
 }
 
 - (void)confirmRequest:(BRPaymentRequest *)request
@@ -453,6 +667,7 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         [self confirmAmount:amount fee:fee address:address name:protoReq.commonName memo:protoReq.details.memo
          isSecure:(valid && ! [protoReq.pkiType isEqual:@"none"]) ? YES : NO];
     }
+    //TODO: this method
 }
 
 - (void)confirmSweep:(NSString *)privKey
@@ -600,6 +815,39 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
     [self.navigationController presentViewController:self.scanController animated:YES completion:nil];
 }
 
+- (IBAction)payToBTAddress:(id)sender
+{
+    if ([self nextTip]) return;
+    
+    BRWalletManager *m = [BRWalletManager sharedInstance];
+    NSString *p = [_addressLabel text];
+    NSCharacterSet *c = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    
+    [sender setEnabled:NO];
+    
+    
+    for (NSString *s in [@[p] arrayByAddingObjectsFromArray:[p componentsSeparatedByCharactersInSet:c]]) {
+        BRPaymentRequest *req = [BRPaymentRequest requestWithString:s];
+        [req setAmount:self.protoReqAmount];
+        //TODO: possibly add a memo message
+        
+        NSData *d = s.hexToData.reverse;
+        
+        // if the clipboard contains a known txHash, we know it's not a hex encoded private key
+        if (d.length == 32 && [[m.wallet.recentTransactions valueForKey:@"txHash"] containsObject:d]) continue;
+        
+        if ([req isValid] || [s isValidBitcoinPrivateKey] || [s isValidBitcoinBIP38Key]) {
+            [self performSelector:@selector(confirmRequest:) withObject:req afterDelay:0.0];// delayed to show highlight
+            return;
+        }
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"This business didn't provide a valid bitcoin address. Please inform them so they can correct the issue.", nil)
+                                message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
+    [self performSelector:@selector(cancel:) withObject:self afterDelay:0.1];
+    
+}
+
 - (IBAction)payToClipboard:(id)sender
 {
     if ([self nextTip]) return;
@@ -736,6 +984,7 @@ fromConnection:(AVCaptureConnection *)connection
 
 #pragma mark - UIAlertViewDelegate
 
+//TODO: ETHAN USE THIS
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == alertView.cancelButtonIndex) {
@@ -827,9 +1076,10 @@ fromConnection:(AVCaptureConnection *)connection
         }
         else {
             //TODO: XXXX show full screen sent dialog with tx info, "you sent b10,000 to bob"
-            [self.view addSubview:[[[BRBubbleView viewWithText:NSLocalizedString(@"sent!", nil)
+            [self.view addSubview:[[[BRBubbleView viewWithText:NSLocalizedString(@"Transaction Complete!", nil)
                                      center:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)]
                                     popIn] popOutAfterDelay:2.0]];
+           
             [self reset:nil];
         }
     }];
@@ -1009,5 +1259,272 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
 {
     return self;
 }
+
+#pragma mark - Central Methods
+
+
+
+/** centralManagerDidUpdateState is a required protocol method.
+ *  Usually, you'd check for other states to make sure the current device supports LE, is powered on, etc.
+ *  In this instance, we're just using it to wait for CBCentralManagerStatePoweredOn, which indicates
+ *  the Central is ready to be used.
+ */
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    if (central.state != CBCentralManagerStatePoweredOn) {
+        // In a real app, you'd deal with all the states correctly
+        return;
+    }
+    
+    // The state must be CBCentralManagerStatePoweredOn...
+    
+    // ... so start scanning
+    [self scan];
+    
+}
+
+
+/** Scan for peripherals - specifically for our service's 128bit CBUUID
+ */
+- (void)scan
+{
+    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]
+                                                options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    
+    NSLog(@"Scanning started");
+}
+
+
+/** This callback comes whenever a peripheral that is advertising the TRANSFER_SERVICE_UUID is discovered.
+ *  We check the RSSI, to make sure it's close enough that we're interested in it, and if it is,
+ *  we start the connection process
+ */
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
+{
+    // Reject any where the value is above reasonable range
+    if (RSSI.integerValue > -15) {
+        return;
+    }
+    
+    // Reject if the signal strength is too low to be close enough (Close is around -22dB)
+    if (RSSI.integerValue < -35) {
+        return;
+    }
+    
+    NSLog(@"Discovered %@ at %@", peripheral.name, RSSI);
+    
+    // Ok, it's in range - have we already seen it?
+    if (self.discoveredPeripheral != peripheral) {
+        
+        // Save a local copy of the peripheral, so CoreBluetooth doesn't get rid of it
+        self.discoveredPeripheral = peripheral;
+        
+        // And connect
+        NSLog(@"Connecting to peripheral %@", peripheral);
+        [self.centralManager connectPeripheral:peripheral options:nil];
+    }
+}
+
+
+/** If the connection fails for whatever reason, we need to deal with it.
+ */
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"Failed to connect to %@. (%@)", peripheral, [error localizedDescription]);
+    [self cleanup];
+}
+
+
+/** We've connected to the peripheral, now we need to discover the services and characteristics to find the 'transfer' characteristic.
+ */
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    NSLog(@"Peripheral Connected");
+    
+    // Stop scanning
+    [self.centralManager stopScan];
+    NSLog(@"Scanning stopped");
+    
+    // Clear the data that we may already have
+    [self.data setLength:0];
+    
+    // Make sure we get the discovery callbacks
+    peripheral.delegate = self;
+    
+    // Search only for services that match our UUID
+    [peripheral discoverServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]];
+}
+
+
+/** The Transfer Service was discovered
+ */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Error discovering services: %@", [error localizedDescription]);
+        [self cleanup];
+        return;
+    }
+    
+    // Discover the characteristic we want...
+    
+    // Loop through the newly filled peripheral.services array, just in case there's more than one.
+    for (CBService *service in peripheral.services) {
+        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]] forService:service];
+    }
+}
+
+
+/** The Transfer characteristic was discovered.
+ *  Once this has been found, we want to subscribe to it, which lets the peripheral know we want the data it contains
+ */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    // Deal with errors (if any)
+    if (error) {
+        NSLog(@"Error discovering characteristics: %@", [error localizedDescription]);
+        [self cleanup];
+        return;
+    }
+    
+    // Again, we loop through the array, just in case.
+    for (CBCharacteristic *characteristic in service.characteristics) {
+        
+        // And check if it's the right one
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+            
+            // If it is, subscribe to it
+            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+        }
+    }
+    
+    // Once this is complete, we just need to wait for the data to come in.
+}
+
+
+/** This callback lets us know more data has arrived via notification on the characteristic
+ */
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Error discovering characteristics: %@", [error localizedDescription]);
+        return;
+    }
+    
+    NSString *stringFromData = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+    
+    // Have we got everything we need?
+    if ([stringFromData isEqualToString:@"EOM"]) {
+        NSString *billData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        // We have, so show the data,
+        NSLog(@"DATA RECEIVED: %@", billData);
+        
+        NSArray* billArray = [billData componentsSeparatedByString: @":"];
+        NSString* address = [billArray objectAtIndex: 1];
+        NSString* amount = [billArray objectAtIndex: 2];
+        double numAmount = [amount doubleValue];
+        int64_t bitAmount = numAmount * 1000000; //convert from bitcoins to bits
+        NSNumber *myDoubleNumber = [NSNumber numberWithDouble:bitAmount];
+        [self setProtoReqAmount:bitAmount*100];
+        [_BTStatusImage setImage:[UIImage imageNamed:@"shop.png"] forState:UIControlStateNormal];
+        [_BTStatusImage setEnabled:YES];
+        [_BTStatusLabel setText:[NSString stringWithFormat:@"Tap to Pay %@", [billArray objectAtIndex:0]]];
+        [_addressLabel setText:address];
+        [_bitsLabel setText:[NSString stringWithFormat:@"%@ ƀ",[myDoubleNumber stringValue]]];
+        BRWalletManager *m = [BRWalletManager sharedInstance];
+        [_dollarsLabel setText:[NSString stringWithFormat:@"%@",[m localCurrencyStringForAmount:bitAmount*100]]];
+        [_bitsLabel setHidden:NO];
+        [_addressLabel setHidden:NO];
+        [_dollarsLabel setHidden:NO];
+        //[self.textview setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        
+        // Cancel our subscription to the characteristic
+        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+        
+        // and disconnect from the peripehral
+        [self.centralManager cancelPeripheralConnection:peripheral];
+    }
+    
+    // Otherwise, just add the data on to what we already have
+    [self.data appendData:characteristic.value];
+    
+    // Log it
+    NSLog(@"Received: %@", stringFromData);
+}
+
+
+/** The peripheral letting us know whether our subscribe/unsubscribe happened or not
+ */
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Error changing notification state: %@", error.localizedDescription);
+    }
+    
+    // Exit if it's not the transfer characteristic
+    if (![characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+        return;
+    }
+    
+    // Notification has started
+    if (characteristic.isNotifying) {
+        NSLog(@"Notification began on %@", characteristic);
+    }
+    
+    // Notification has stopped
+    else {
+        // so disconnect from the peripheral
+        NSLog(@"Notification stopped on %@.  Disconnecting", characteristic);
+        [self.centralManager cancelPeripheralConnection:peripheral];
+    }
+}
+
+
+/** Once the disconnection happens, we need to clean up our local copy of the peripheral
+ */
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"Peripheral Disconnected");
+    self.discoveredPeripheral = nil;
+    
+    // We're disconnected, so start scanning again
+    [self scan];
+}
+
+
+/** Call this when things either go wrong, or you're done with the connection.
+ *  This cancels any subscriptions if there are any, or straight disconnects if not.
+ *  (didUpdateNotificationStateForCharacteristic will cancel the connection if a subscription is involved)
+ */
+- (void)cleanup
+{
+    // Don't do anything if we're not connected
+    if (self.discoveredPeripheral.state == CBPeripheralStateDisconnected) {
+        return;
+    }
+    
+    // See if we are subscribed to a characteristic on the peripheral
+    if (self.discoveredPeripheral.services != nil) {
+        for (CBService *service in self.discoveredPeripheral.services) {
+            if (service.characteristics != nil) {
+                for (CBCharacteristic *characteristic in service.characteristics) {
+                    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+                        if (characteristic.isNotifying) {
+                            // It is notifying, so unsubscribe
+                            [self.discoveredPeripheral setNotifyValue:NO forCharacteristic:characteristic];
+                            
+                            // And we're done.
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // If we've got this far, we're connected, but we're not subscribed, so we just disconnect
+    [self.centralManager cancelPeripheralConnection:self.discoveredPeripheral];
+}
+
 
 @end

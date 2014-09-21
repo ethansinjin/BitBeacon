@@ -124,20 +124,20 @@
     self.activeObserver =
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidBecomeActiveNotification object:nil
         queue:nil usingBlock:^(NSNotification *note) {
-            if (self.appeared && m.wallet && self.navigationController.presentedViewController != self.pinNav) {
-                self.pinNav = [self.storyboard instantiateViewControllerWithIdentifier:@"PINNav"];
-                [self.pinNav.viewControllers.firstObject setAppeared:YES];
-
-                if (self.navigationController.presentedViewController) {
-                    [self.navigationController dismissViewControllerAnimated:NO completion:^{
-                        [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
-                    }];
-                }
-                else [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
-
-                self.pinNav.transitioningDelegate = self.pinNav.viewControllers.firstObject;
-                [[BRPeerManager sharedInstance] connect];
-            }
+//            if (self.appeared && m.wallet && self.navigationController.presentedViewController != self.pinNav) {
+//                self.pinNav = [self.storyboard instantiateViewControllerWithIdentifier:@"PINNav"];
+//                [self.pinNav.viewControllers.firstObject setAppeared:YES];
+//
+//                if (self.navigationController.presentedViewController) {
+//                    [self.navigationController dismissViewControllerAnimated:NO completion:^{
+//                        [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
+//                    }];
+//                }
+//                else [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
+//
+//                self.pinNav.transitioningDelegate = self.pinNav.viewControllers.firstObject;
+//                [[BRPeerManager sharedInstance] connect];
+//            }
 
             if (jailbroken && m.wallet.balance > 0) {
                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
@@ -157,27 +157,28 @@
                   otherButtonTitles:NSLocalizedString(@"close app", nil), nil] show];
             }
         }];
-
-    self.resignActiveObserver =
-        [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillResignActiveNotification object:nil
-        queue:nil usingBlock:^(NSNotification *note) {
-            if (self.appeared && m.wallet && self.navigationController.presentedViewController != self.pinNav) {
-                self.pinNav = [self.storyboard instantiateViewControllerWithIdentifier:@"PINNav"];
-                [self.pinNav.viewControllers.firstObject setAppeared:YES];
-
-                if (self.navigationController.presentedViewController) {
-                    [self.navigationController dismissViewControllerAnimated:NO completion:^{
-                        [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
-                    }];
-                }
-                else [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
-
-                self.pinNav.transitioningDelegate = self.pinNav.viewControllers.firstObject;
-            }
-
-            self.url = nil;
-            self.file = nil;
-        }];
+    
+    //TODO: re-enable this.
+//    self.resignActiveObserver =
+//        [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillResignActiveNotification object:nil
+//        queue:nil usingBlock:^(NSNotification *note) {
+//            if (self.appeared && m.wallet && self.navigationController.presentedViewController != self.pinNav) {
+//                self.pinNav = [self.storyboard instantiateViewControllerWithIdentifier:@"PINNav"];
+//                [self.pinNav.viewControllers.firstObject setAppeared:YES];
+//
+//                if (self.navigationController.presentedViewController) {
+//                    [self.navigationController dismissViewControllerAnimated:NO completion:^{
+//                        [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
+//                    }];
+//                }
+//                else [self.navigationController presentViewController:self.pinNav animated:NO completion:nil];
+//
+//                self.pinNav.transitioningDelegate = self.pinNav.viewControllers.firstObject;
+//            }
+//
+//            self.url = nil;
+//            self.file = nil;
+//        }];
 
     self.reachabilityObserver =
         [[NSNotificationCenter defaultCenter] addObserverForName:kReachabilityChangedNotification object:nil queue:nil
